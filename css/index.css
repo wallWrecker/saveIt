@@ -1,11 +1,20 @@
-header {
-  height:60vh;
+.basic-nav {
+  min-height: 2.6em;
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255,0.3) );
 }
-.main-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ),  url("https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg?cs=srgb&dl=pexels-cottonbro-5077047.jpg&fm=jpg");
+.basic-nav div a.about-link {
+  text-decoration: none;
+}
+.hero-header {
+  min-height:80vh;
+}
+
+.hero-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3) ),  url("https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg?cs=srgb&dl=pexels-cottonbro-5077047.jpg&fm=jpg");
   background-size: cover;
   background-repeat: no-repeat;
-} 
+}
+
 h2.large-header {
   font-size: 3.5em;
 }
