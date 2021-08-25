@@ -15,7 +15,12 @@
 }
 
 h2#hero-headline {
-  font-size: 3.5em;
+  font-family: 'Merriweather', serif;
+  font-size: 50px;
+}
+h2#hero-headline span.yellow-lemon {color: #dec800;}
+p #hero-subheadline {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /*##################################################################*/
