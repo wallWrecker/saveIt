@@ -21,10 +21,16 @@ h2#hero-headline {
 h2#hero-headline span.yellow-lemon {color: #dec800;}
 p #hero-subheadline {
   font-family: 'Montserrat', sans-serif;
+} 
+
+a.getstarted-button {
+  border: none;
+  background-color: #dec800;
 }
+
 
 /*##################################################################*/
 /*Benefit Section*/
-div.benefit-section {
+article.benefit-section {
   min-height: 50vh;
 }
