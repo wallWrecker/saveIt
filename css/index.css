@@ -5,16 +5,21 @@
 .basic-nav div a.about-link {
   text-decoration: none;
 }
-.hero-header {
+/*###############################################################*/
+/*Hero Section*/
+.hero-header-section {
   min-height:80vh;
-}
-
-.hero-header {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3) ),  url("https://images.pexels.com/photos/5077047/pexels-photo-5077047.jpeg?cs=srgb&dl=pexels-cottonbro-5077047.jpg&fm=jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-h2.large-header {
+h2#hero-headline {
   font-size: 3.5em;
+}
+
+/*##################################################################*/
+/*Benefit Section*/
+div.benefit-section {
+  min-height: 50vh;
 }
