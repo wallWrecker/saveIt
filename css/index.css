@@ -16,15 +16,27 @@
 
 h2#hero-headline {
   font-family: 'Merriweather', serif;
+  font-weight: bold;
   font-size: 50px;
 }
 h2#hero-headline span.yellow-lemon {color: #dec800;}
 p #hero-subheadline {
   font-family: 'Montserrat', sans-serif;
+} 
+
+a.getstarted-button {
+  border: none;
+  background-color: #dec800;
 }
+
+a.browsecollection-link:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
 
 /*##################################################################*/
 /*Benefit Section*/
-div.benefit-section {
+article.benefit-section {
   min-height: 50vh;
 }
