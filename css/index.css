@@ -28,9 +28,7 @@ a.getstarted-button {
   border: none;
   background-color: #dec800;
 }
-a.browsecollection-link {
 
-}
 a.browsecollection-link:hover {
   color: gray;
   text-decoration: underline;
