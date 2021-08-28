@@ -16,6 +16,7 @@
 
 h2#hero-headline {
   font-family: 'Merriweather', serif;
+  font-weight: bold;
   font-size: 50px;
 }
 h2#hero-headline span.yellow-lemon {color: #dec800;}
@@ -26,6 +27,13 @@ p #hero-subheadline {
 a.getstarted-button {
   border: none;
   background-color: #dec800;
+}
+a.browsecollection-link {
+
+}
+a.browsecollection-link:hover {
+  color: gray;
+  text-decoration: underline;
 }
 
 
