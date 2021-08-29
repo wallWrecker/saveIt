@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>saveIt - Homepage</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+	<!-- Import link Google font of Merriwhether -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	 <!-- Imported Merriwhether Montserrat Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+	
+	<!-- Linking my own CSS Styles -->
+	<link rel="stylesheet" href="css/main-app.css">
+</head>
+<body>
+	<section class=" form-section lightBlue">
+		<article>
+			<form class="container-sm pt-3 pb-2 border">
+				<div class="py-5 greeting-container">
+					<h2 class="h3 greeting-message">
+						Did you find interesting stuff to save? Use the form below.
+					</h2>
+				</div>
+				
+				<div class="row justify-content-center">
+					<div class="col-12 col-sm-5 py-2">
+						<label class="form-label " for="">Subject title</label>
+						<input id="subject-title" class="form-control" type="text" placeholder="Enter title of subject">
+						<small class="form-text ">This is an error message</small>
+					</div>
+					<div class="col-12 col-sm-5 py-2">
+						<label class="form-label " for="subject-type">Subject title</label>
+						<select 
+							id="subject-type" 
+							class="form-select" 
+							name="">
+								<option selected value="0">What type it is?</option>
+								<option value="food">Food Article</option>
+								<option value="lifestyle">Lifestyle Article</option>
+								<option value="sports">Sports</option>
+								<option value="tricks">Tips and Tricks</option>
+							</select>
+							<small class="form-text ">This is an error message</small>
+					</div>
+					<div class="col-12 col-sm-10 py-2">
+						<label class="form-label " for="">Subject url or link</label>
+						<input id="subject-title" class="form-control" type="text" placeholder="Enter url of subject">
+						<small class="form-text ">This is an error message</small>
+					</div>
+					<div class="col-12 col-sm-10 py-2">
+						<label class="form-label" for="">Subject url or link</label>
+						<textarea name="" id="subject-description" class="form-control" cols="30" rows="10"></textarea>
+						<small class="form-text ">This is an error message</small>
+					</div>
+
+					<!-- Submit button -->
+					<div class="">
+						<a href="#" class="btn btn-primary">Save it</a>
+					</div>
+				</div>
+			</form>
+		</article>
+	</section>
+	<section class="results-section">
+		
+	</section>
+
+	<!-- Bootstrap Javasript bundle -->
+	<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- My Javascript code -->
+	<script src="js/main-app.js"></script>
+</body>
+</html>
+</body>
+</html>
