@@ -24,22 +24,23 @@
 	<link rel="stylesheet" href="css/main-app.css">
 </head>
 <body>
-	<section class=" form-section lightBlue">
+	<section class="form-section lightBlue py-1">
 		<article>
-			<form class="container-sm pt-3 pb-2 border">
-				<div class="py-5 greeting-container">
-					<h2 class="h3 greeting-message">
-						Did you find interesting stuff to save? Use the form below.
-					</h2>
-				</div>
-				
+			<form class="container-sm pt-3 pb-2">
 				<div class="row justify-content-center">
-					<div class="col-12 col-sm-5 py-2">
+					<!-- Message -->
+					<div class="col-sm-10 py-5 greeting-container">
+						<h2 class="h4 col-7 col-sm-6 greeting-message">
+							Did you find interesting stuff to save? Use the form below.
+						</h2>
+					</div>
+
+					<div class="col-12 col-sm-6 py-2">
 						<label class="form-label " for="">Subject title</label>
 						<input id="subject-title" class="form-control" type="text" placeholder="Enter title of subject">
 						<small class="form-text ">This is an error message</small>
 					</div>
-					<div class="col-12 col-sm-5 py-2">
+					<div class="col-12 col-sm-4 py-2">
 						<label class="form-label " for="subject-type">Subject title</label>
 						<select 
 							id="subject-type" 
@@ -65,8 +66,8 @@
 					</div>
 
 					<!-- Submit button -->
-					<div class="">
-						<a href="#" class="btn btn-primary">Save it</a>
+					<div class="col-12 col-sm-10 pt-1 pb-1">
+						<a href="#" id="lemonyellow" class="btn px-4">Save it</a>
 					</div>
 				</div>
 			</form>
