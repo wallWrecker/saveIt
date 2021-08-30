@@ -6,7 +6,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<!DOCTYPE html>
+	
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -19,7 +19,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	 <!-- Imported Merriwhether Montserrat Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-	
+	<!-- Merriwhather sans from google font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 	<!-- Linking my own CSS Styles -->
 	<link rel="stylesheet" href="css/main-app.css">
 </head>
@@ -29,19 +32,19 @@
 			<form class="container-sm pt-3 pb-2">
 				<div class="row justify-content-center">
 					<!-- Message -->
-					<div class="col-sm-10 py-5 greeting-container">
-						<h2 class="h4 col-7 col-sm-6 greeting-message">
+					<div class="col-sm-11 py-5 greeting-container">
+						<h2 class="h4 col-7 col-sm-7 col-xl-4 greeting-message">
 							Did you find interesting stuff to save? Use the form below.
 						</h2>
 					</div>
 
-					<div class="col-12 col-sm-6 py-2">
-						<label class="form-label " for="">Subject title</label>
+					<div class="col-12 col-sm-6 col-xl-6 py-2">
+						<label class="form-label thin-label " for="">Subject title</label>
 						<input id="subject-title" class="form-control" type="text" placeholder="Enter title of subject">
 						<small class="form-text ">This is an error message</small>
 					</div>
-					<div class="col-12 col-sm-4 py-2">
-						<label class="form-label " for="subject-type">Subject title</label>
+					<div class="col-12 col-sm-5 col-xl-4 py-2">
+						<label class="form-label thin-label " for="subject-type">Subject title</label>
 						<select 
 							id="subject-type" 
 							class="form-select" 
@@ -52,21 +55,21 @@
 								<option value="sports">Sports</option>
 								<option value="tricks">Tips and Tricks</option>
 							</select>
-							<small class="form-text ">This is an error message</small>
+							<small class="form-text thin-label">This is an error message</small>
 					</div>
-					<div class="col-12 col-sm-10 py-2">
-						<label class="form-label " for="">Subject url or link</label>
+					<div class="col-12 col-sm-11 col-xl-10 py-2">
+						<label class="form-label thin-label " for="">Subject url or link</label>
 						<input id="subject-title" class="form-control" type="text" placeholder="Enter url of subject">
-						<small class="form-text ">This is an error message</small>
+						<small class="form-text thin-label">This is an error message</small>
 					</div>
-					<div class="col-12 col-sm-10 py-2">
-						<label class="form-label" for="">Subject url or link</label>
-						<textarea name="" id="subject-description" class="form-control" cols="30" rows="10"></textarea>
-						<small class="form-text ">This is an error message</small>
+					<div class="col-12 col-sm-11 col-xl-10 py-2">
+						<label class="form-label thin-label" for="">Subject url or link</label>
+						<textarea name="" id="subject-description" class="form-control" cols="30" rows="5"></textarea>
+						<small class="form-text thin-label">This is an error message</small>
 					</div>
 
 					<!-- Submit button -->
-					<div class="col-12 col-sm-10 pt-1 pb-1">
+					<div class="col-12 col-sm-11 col-xl-10 pt-1 pb-1">
 						<a href="#" id="lemonyellow" class="btn px-4">Save it</a>
 					</div>
 				</div>
