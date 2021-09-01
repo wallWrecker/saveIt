@@ -1,8 +1,7 @@
 section.lightBlue {
   background-color: #F7FBFD;
 }
-
-h4.greeting-message {
+.greeting-message {
   font-family: 'Merriweather Sans', sans-serif;
   font-weight: 400;
 }
