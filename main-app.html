@@ -23,8 +23,8 @@
 			<form class="container-sm pt-3 pb-2">
 				<div class="row justify-content-center">
 					<!-- Message -->
-					<div class="col-10 col-sm-10 col-xxl-10 py-3 greeting-container">
-						<h2 class="h4 col-10 col-sm-7 col-xl-4 greeting-message">
+					<div class="col-10 col-sm-11 col-xxl-10 py-3 greeting-container">
+						<h2 class="h4 col-10 col-sm-8 col-xl-4 greeting-message">
 							Did you find interesting stuff to save? Use the form below.
 						</h2>
 					</div>
@@ -35,7 +35,7 @@
 						<small class="form-text ">This is an error message</small>
 					</div>
 					<div class="col-10 col-sm-5 col-xl-4 py-2">
-						<label class="form-label thin-label " for="subject-type">Subject title</label>
+						<label class="form-label thin-label" for="subject-type">Subject type</label>
 						<select
 							id="subject-type"
 							class="form-select" 
@@ -50,16 +50,16 @@
 					</div>
 					<div class="col-10 col-sm-11 col-xl-10 py-2">
 						<label class="form-label thin-label " for="">Subject url or link</label>
-						<input id="subject-title" class="form-control" type="text" placeholder="Enter url of subject">
+						<input id="subject-url" class="form-control" type="text" placeholder="Enter url of subject">
 						<small class="form-text thin-label">This is an error message</small>
 					</div>
 					<div class="col-10 col-sm-11 col-xl-10 py-2">
-						<label class="form-label thin-label" for="">Subject url or link</label>
+						<label class="form-label thin-label" for="">Subject description</label>
 						<textarea name="" id="subject-description" class="form-control" cols="30" rows="5"></textarea>
 						<div class="d-flex justify-content-between">
 							<small class="form-text thin-label">This is an error message</small>
 							<small class="form-text thin-label">
-								<span>0</span>/130 charaters
+								<span id="character-count">0</span>/130 charaters
 							</small>
 						</div>
 					</div>
@@ -73,6 +73,8 @@
 		</article>
 	</section>
 
+
+	<!-- Result section -->
 	<section class="container-lg pt-3 pb-2 results-section">
 		<h3 class="py-5 greeting-message">Here are your previously saved stuffs.</h3>
 		
@@ -90,61 +92,17 @@
 		<!-- List of results section -->
 		<div class="row justify-content-center py-3">
 				<!-- These elements out here are only for viewing perspective -->
-				<div class="col-10 col-sm-5 col-md-4 col-lg-4 bg-light-lighter my-2">
+				<div class="col-10 col-sm-5 col-md-4 col-lg-4 bg-light border my-2">
 					<div class="bg-light rounded-1 p-2">
 						<small id="card-subject-type" class=" text-center text-primary p-1 ">Article</small>
-						<h4 class="h4 py-1">This is an awesome uniquely crafted headline</h4>
+						<h4 class="h5 py-1">This is an awesome uniquely crafted headline</h4>
 						<p>I like this set up this is so refreshing an all of that. </p>
 							<hr> <!--It creates horizonal line.-->
 						<a
 							class="link-info" 
-							href="#">Visit Link
+							href="#">
+							Visit Link
 						</a>
-					</div>
-				</div>
-				
-				<div class="col-10 col-sm-5 col-md-4 col-lg-4 bg-light-lighter my-2">
-					<div class="bg-light rounded-1 p-2">
-						<small id="card-subject-type" class=" text-center text-primary p-1 ">Article</small>
-						<h4 class="h4 py-1">This is an awesome uniquely crafted headline</h4>
-						<p>I like this set up this is so refreshing an all of that. </p>
-							<hr> <!--It creates horizonal line.-->
-						<a
-							class="link-info" 
-							href="#">Visit Link</a>
-					</div>
-				</div>
-				<div class="col-10 col-sm-5 col-md-4 col-lg-4 bg-light-lighter my-2">
-					<div class="bg-light rounded-1 p-2">
-						<small id="card-subject-type" class=" text-center text-primary p-1 ">Article</small>
-						<h4 class="h4 py-1">This is an awesome uniquely crafted headline</h4>
-						<p>I like this set up this is so refreshing an all of that. </p>
-							<hr> <!--It creates horizonal line.-->
-						<a
-							class="link-info" 
-							href="#">Visit Link</a>
-					</div>
-				</div>
-				<div class="col-10 col-sm-5 col-md-4 col-lg-4 bg-light-lighter my-2">
-					<div class="bg-light rounded-1 p-2">
-						<small id="card-subject-type" class=" text-center text-primary p-1 ">Article</small>
-						<h4 class="h4 py-1">This is an awesome uniquely crafted headline</h4>
-						<p>I like this set up this is so refreshing an all of that. </p>
-							<hr> <!--It creates horizonal line.-->
-						<a
-							class="link-info" 
-							href="#">Visit Link</a>
-					</div>
-				</div>
-				<div class="col-10 col-sm-5 col-md-4 col-lg-4 bg-light-lighter my-2">
-					<div class="bg-light rounded-1 p-2">
-						<small id="card-subject-type" class=" text-center text-primary p-1 ">Article</small>
-						<h4 class="h4 py-1">This is an awesome uniquely crafted headline</h4>
-						<p>I like this set up this is so refreshing an all of that. </p>
-							<hr> <!--It creates horizonal line.-->
-						<a
-							class="link-info" 
-							href="#">Visit Link</a>
 					</div>
 				</div>
 		</div>
