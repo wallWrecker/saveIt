@@ -1,12 +1,16 @@
+// This will be used for temporary data handler later.
+const temporaryDataHandler = {title: "", type: "", url: "", description: "", date_posted: ""};
+
+// Initiate other essential elements from form inputs 
+const characterCount = document.getElementById("character-count");
+
+// Initiate necessary forminputs ID for attaching eventlistener later.
 const collectionOfFormInputId = [
   "subject-title",
   "subject-type",
   'subject-url',
   'subject-description'
 ];
-
-const characterCount = document.getElementById("character-count");
-const temporaryDataHandler = {title: "", type: "", url: "", description: "", date_posted: ""};
 
 collectionOfFormInputId.forEach(function(id) {
   const formInput = document.getElementById(id);
@@ -33,8 +37,8 @@ collectionOfFormInputId.forEach(function(id) {
       formInput.addEventListener('change', function() {
         // But first let's verify if the input is legit.
         if(verifyFormTextbox(this)) {
-          // Add value to the temporaryDataHandler varible.
-          const dataKey = this.id;
+          const dataKey = this.dataset.key;
+          // Add value to the temporaryDataHandler object varible.
           console.log(dataKey);
         } else {
           // Then send some notification next to the input element.
@@ -43,19 +47,30 @@ collectionOfFormInputId.forEach(function(id) {
         }
       })
       break;
+    
+    case "textarea":
+      
+      /*
+        This element it has to be a limit of how many characters
+        that a user can enter and that limit is 150 characters.
+        That's what the eventlistener below purpose. To monitor how many characters
+        and to limit.
+      */
+      formInput.addEventListener('change',function() {
+        
+      });
+
+      formInput.addEventListener('blur', function() {
+       
+      });
   }
 });
 
 // Function to verify input & select elements value
 function verifyFormTextbox(element) {
-  let result = true;
-  if(element.value == 0 || element.value.length === 0 || element.value == "0") {
-    result = false;
-    return result;
-  }
-  return result;
+  if(element.value == 0 || element.value.length === 0 || element.value == "0") { return false;} return true;
 }
 
-// function verifySelectElement(element) {
-//   if(this.value )
-// }
+function verifySelectElement(element) {
+  if(selectElement.value == "0" || selectElement.value === 0) {return false;} return true;
+}
