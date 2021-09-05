@@ -28,10 +28,9 @@
 							Did you find interesting stuff to save? Use the form below.
 						</h2>
 					</div>
-
 					<div class="col-10 col-sm-6 col-xl-6 py-2">
-						<label class="form-label thin-label " for="">Subject title</label>
-						<input id="subject-title" class="form-control" type="text" placeholder="Enter title of subject">
+						<label class="form-label thin-label" for="">Subject title</label>
+						<input id="subject-title" class="form-control" type="text" data-key="title" placeholder="Enter title of subject">
 						<small class="form-text ">This is an error message</small>
 					</div>
 					<div class="col-10 col-sm-5 col-xl-4 py-2">
@@ -39,9 +38,10 @@
 						<select
 							id="subject-type"
 							class="form-select" 
-							name="">
+							name=""
+							data-key="type">
 								<option selected value="0">What type it is?</option>
-								<option value="food">Food Article</option>
+								<option value="food">Food Arti	cle</option>
 								<option value="lifestyle">Lifestyle Article</option>
 								<option value="sports">Sports</option>
 								<option value="tricks">Tips and Tricks</option>
@@ -50,12 +50,17 @@
 					</div>
 					<div class="col-10 col-sm-11 col-xl-10 py-2">
 						<label class="form-label thin-label " for="">Subject url or link</label>
-						<input id="subject-url" class="form-control" type="text" placeholder="Enter url of subject">
+						<input 
+							id="subject-url" 
+							class="form-control" 
+							type="text" 
+							data-key="url" 
+							placeholder="Enter url of subject">
 						<small class="form-text thin-label">This is an error message</small>
 					</div>
 					<div class="col-10 col-sm-11 col-xl-10 py-2">
 						<label class="form-label thin-label" for="">Subject description</label>
-						<textarea name="" id="subject-description" class="form-control" cols="30" rows="5"></textarea>
+						<textarea name="" id="subject-description" class="form-control" data-key="description" cols="30" rows="5"></textarea>
 						<div class="d-flex justify-content-between">
 							<small class="form-text thin-label">This is an error message</small>
 							<small class="form-text thin-label">
