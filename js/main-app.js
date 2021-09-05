@@ -3,7 +3,7 @@ const temporaryDataHandler = {title: "", type: "", url: "", description: "", dat
 
 // Initiate other essential elements from form inputs 
 const characterCount = document.getElementById("character-count");
-
+console.log(typeof characterCount.textContent)
 // Initiate necessary forminputs ID for attaching eventlistener later.
 const collectionOfFormInputId = [
   "subject-title",
@@ -49,7 +49,7 @@ collectionOfFormInputId.forEach(function(id) {
       break;
     
     case "textarea":
-      
+      let mydescription = "";
       /*
         This element it has to be a limit of how many characters
         that a user can enter and that limit is 150 characters.
