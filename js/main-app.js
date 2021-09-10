@@ -1,4 +1,8 @@
+// Initialize collections object.
+const collectionObject = JSON.parse(localStorage.getItem('collections')) || [];
 
+// This will be used for temporary data handler later.
+const temporaryDataHandler = {title: "", type: "", url: "", description: "", date_posted: ""};
 // Initiate necessary forminputs ID for attaching eventlistener later.
 const collectionOfFormInputId = [
   "subject-title",
@@ -6,8 +10,7 @@ const collectionOfFormInputId = [
   'subject-url',
   'subject-description'
 ];
-// This will be used for temporary data handler later.
-const temporaryDataHandler = {title: "", type: "", url: "", description: "", date_posted: ""};
+
 
 // Loops through all form elements and them appropriate eventListeners.
 collectionOfFormInputId.forEach(function(id) {
@@ -57,7 +60,8 @@ collectionOfFormInputId.forEach(function(id) {
         That's what the eventlistener below purpose. To monitor how many characters
         and to limit.
       */
-      formInput.addEventListener('input',function(e) {
+     
+      formInput.addEventListener('input', function(e) {
         // Initiate other essential elements from form inputs 
         const characterCounterElement = document.getElementById("character-count");
         characterCounterElement.textContent = this.value.length;
@@ -72,13 +76,11 @@ collectionOfFormInputId.forEach(function(id) {
   }
 });
 
+// Events for submit button
 const submitButton = document.getElementById('submit-button');
 submitButton.addEventListener('click', function() {
-  console.log(temporaryDataHandler);
-  const currentDate = new Date()
+  
 })
-
-
 
 // Tidbits functions
 // Function to verify input & select elements value
@@ -93,4 +95,24 @@ function verifySelectElement(element) {
 // Function to save form input data. 
 function saveToDataHandler(dataKey, data) {
   temporaryDataHandler[dataKey] = data;
+}
+
+function getTodayDate() {
+  let currentDate = ""
+  const d     = new Date();
+  const day   = d.getDate(); 
+  const month = d.getMonth(); 
+  const year  = d.getFullYear(); 
+
+  currentDate = `${month}-${day}-${year}`;
+  return currentDate;
+}
+// Function to convert & save temporary data object to collections object.
+function saveToLocalStorage(obj) {
+  collectionObject.push(obj);
+  // Convert temporaryDataHandler using stringify
+  const convertedCollections = JSON.stringify(collectionObject);
+  // Then save to localStorage.
+  localStorage.setItem('collections', convertedCollections);
+  return true;
 }
