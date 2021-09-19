@@ -62,7 +62,7 @@ collectionOfFormInputId.forEach(function(id) {
       */
      
       formInput.addEventListener('input', function(e) {
-        // Initiate other essential elements from form inputs 
+        // Initiate other essential elements from form inputs.
         const characterCounterElement = document.getElementById("character-count");
         characterCounterElement.textContent = this.value.length;
         descriptionHandler = this.value;
@@ -79,7 +79,21 @@ collectionOfFormInputId.forEach(function(id) {
 // Events for submit button
 const submitButton = document.getElementById('submit-button');
 submitButton.addEventListener('click', function() {
-  
+  // Before that we need to check if all the properties of the temporary object 
+  // is present.
+  for(let property in temporaryDataHandler) {
+    const tH = temporaryDataHandler; // tH shorthand for temporaryDataHandler.
+    // Check if the current property has a value
+    if(tH[property] == "") {
+      const inputFieldElement = document.getElementById('subject-' + property) || undefined;
+      // Produce an alert to the input field related to property.
+      console.log(inputFieldElement);
+    } 
+    
+  }
+  // If the input fields are passed
+  console.log(r);
+  console.log(saveToLocalStorage(temporaryDataHandler))
 })
 
 // Tidbits functions
@@ -98,7 +112,7 @@ function saveToDataHandler(dataKey, data) {
 }
 
 function getTodayDate() {
-  let currentDate = ""
+  let currentDate = "";
   const d     = new Date();
   const day   = d.getDate(); 
   const month = d.getMonth(); 
@@ -107,12 +121,13 @@ function getTodayDate() {
   currentDate = `${month}-${day}-${year}`;
   return currentDate;
 }
+
 // Function to convert & save temporary data object to collections object.
-function saveToLocalStorage(obj) {
-  collectionObject.push(obj);
+function saveToLocalStorage(temporaryHandler) {
+  collectionObject.push(temporaryHandler);
   // Convert temporaryDataHandler using stringify
   const convertedCollections = JSON.stringify(collectionObject);
   // Then save to localStorage.
-  localStorage.setItem('collections', convertedCollections);
-  return true;
+  // localStorage.setItem('collections', convertedCollections);
+  return convertedCollections;
 }
