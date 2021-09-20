@@ -90,14 +90,14 @@ submitButton.addEventListener('click', function() {
       // Produce an alert to the input field related to property.
       console.log(inputFieldElement);
     }
-  }`
+  }
   // If the input fields are passed
   console.log(r);
   console.log(saveToLocalStorage(temporaryDataHandler));
 })
 
 // Tidbits functions
-// Function to verify input & select elements value`
+// Function to verify input & select elements value
 function verifyFormTextbox(element) {
   if(element.value == 0 || element.value.length === 0 || element.value == "0") {return false;} return true;
 }
