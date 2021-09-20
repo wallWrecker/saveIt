@@ -1,4 +1,5 @@
 // Initialize collections object.
+// Get the collection form localstorage if none then it returns a new empty array.
 const collectionObject = JSON.parse(localStorage.getItem('collections')) || [];
 
 // This will be used for temporary data handler later.
@@ -88,16 +89,15 @@ submitButton.addEventListener('click', function() {
       const inputFieldElement = document.getElementById('subject-' + property) || undefined;
       // Produce an alert to the input field related to property.
       console.log(inputFieldElement);
-    } 
-    
-  }
+    }
+  }`
   // If the input fields are passed
   console.log(r);
-  console.log(saveToLocalStorage(temporaryDataHandler))
+  console.log(saveToLocalStorage(temporaryDataHandler));
 })
 
 // Tidbits functions
-// Function to verify input & select elements value
+// Function to verify input & select elements value`
 function verifyFormTextbox(element) {
   if(element.value == 0 || element.value.length === 0 || element.value == "0") {return false;} return true;
 }
@@ -118,7 +118,7 @@ function getTodayDate() {
   const month = d.getMonth(); 
   const year  = d.getFullYear(); 
 
-  currentDate = `${month}-${day}-${year}`;
+  currentDate = `${month}/${day}/${year}`;
   return currentDate;
 }
 
