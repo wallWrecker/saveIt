@@ -6,7 +6,8 @@ section.lightBlue {
   font-weight: 400;
 }
 /* Styling for thee form labels and little messages */
-.thin-label { 
+.thin-label {
+  margin-left: 5px;
   font-family: 'Merriweather Sans', sans-serif;
   font-weight: 300;
 }
