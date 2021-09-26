@@ -12,6 +12,18 @@ const collectionOfFormInputId = [
   'subject-description'
 ];
 
+// Expirementals 
+const interchanging = setInterval(function(){
+  removeErrorsWarnings('subject-title');
+  const num = Math.floor(Math.random() * Math.floor(100))
+  console.log(num)
+  if(num % 2 === 0) {
+    setWarningInputField('subject-title');
+  } else {
+    setErrorInputfield('subject-title')
+  }
+},1000)
+
 
 // Loops through all form elements and them appropriate eventListeners.
 collectionOfFormInputId.forEach(function(id) {
@@ -64,8 +76,8 @@ collectionOfFormInputId.forEach(function(id) {
      
       formInput.addEventListener('input', function(e) {
         // Initiate other essential elements from form inputs.
-        const characterCounterElement = document.getElementById("character-count");
-        characterCounterElement.textContent = this.value.length;
+        document.getElementById("character-count").textContent  = this.value.length;;
+        // Save the current text from textarea to description handler variable.
         descriptionHandler = this.value;
       });
 
@@ -77,9 +89,10 @@ collectionOfFormInputId.forEach(function(id) {
   }
 });
 
-// Events for submit button
+// Events for submit button..
 const submitButton = document.getElementById('submit-button');
 submitButton.addEventListener('click', function() {
+  clearInterval(interchanging); removeErrorsWarnings('subject-title');
   // Before that we need to check if all the properties of the temporary object 
   // is present.
   for(let property in temporaryDataHandler) {
@@ -92,8 +105,10 @@ submitButton.addEventListener('click', function() {
     }
   }
   // If the input fields are passed
-  console.log(r);
   console.log(saveToLocalStorage(temporaryDataHandler));
+  console.log(temporaryDataHandler);
+  
+  removeErrorsWarnings('subject-title')
 })
 
 // Tidbits functions
@@ -130,4 +145,57 @@ function saveToLocalStorage(temporaryHandler) {
   // Then save to localStorage.
   // localStorage.setItem('collections', convertedCollections);
   return convertedCollections;
+}
+
+// Functions to create & remove input forms alert.
+function setErrorInputfield(id, message) {
+  const color = 'rgba(255, 38, 38, 0.7)';
+  const inputfield = document.getElementById(id);
+  const inputFieldMessage = inputfield.nextElementSibling;
+
+  inputfield.classList.add("error-border");
+  
+  inputFieldMessage.innerText = message || "Hey! I think you need to fill this up!";
+  inputFieldMessage.style.color = "rgb(255, 38, 38)"
+}
+
+function setWarningInputField(id, message) {
+  const color = 'rgba(240, 84, 84, 0.7)';
+  const inputfield = document.getElementById(id);
+  const inputFieldMessage = inputfield.nextElementSibling;
+  
+  inputfield.classList.add("warning-border");
+  
+  inputFieldMessage.innerText = message || "Hey! I think you need to fill this up!";
+  inputFieldMessage.style.color = "rgb(252, 84, 4)";
+}
+
+function removeErrorsWarnings(id) {
+  const inputField = document.getElementById(id);
+  
+  if(inputField.classList.contains('warning-border') || inputField.classList.contains('error-border')) {
+    // removes both classnames even if they are 
+    inputField.classList.remove('warning-border', 'error-border');
+    const inputFieldMessage = inputField.nextElementSibling;
+    const markupName = inputField.localName; 
+    
+    // For the assigning the of message
+    if(markupName == 'input' || markupName == 'textarea') {
+      inputFieldMessage.textContent = "Please fill the input field.";
+      
+    } else if(markupName == 'select') {
+      inputFieldMessage.textContent = "Please select type of your subject ";
+    }
+
+    // Assign default color on field message
+    inputFieldMessage.style.color = "#6c757d";
+  } else {
+    console.log("Nothing has removed")
+  }
+  
+}
+
+// Functions to custom some element
+function changeFontColor(element, colorOfChoice) {
+  return element.style.color = `${colorOfChoice}`;
 }
