@@ -8,11 +8,21 @@ section.lightBlue {
 /* Styling for thee form labels and little messages */
 .thin-label {
   margin-left: 5px;
+
   font-family: 'Merriweather Sans', sans-serif;
   font-weight: 300;
 }
 a.lemonyellow {
   background-color: #EEDC3C;
+}
+
+/*Custom styles for input fields */
+.error-border {
+  /* rgb(255, 0, 0) */
+  border: 2px solid rgb(255, 38, 38, 0.8);
+}
+.warning-border {
+  border: 2px solid rgb(252, 84, 4, 0.8);
 }
 
 /* Styling for result style */
