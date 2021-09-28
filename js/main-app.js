@@ -13,7 +13,7 @@ const collectionOfFormInputId = [
 ];
 
 // Expirementals 
-const interchanging = setInterval(function(){
+const interchanging = setInterval(function() {
   removeErrorsWarnings('subject-title');
   const num = Math.floor(Math.random() * Math.floor(100))
   console.log(num)
@@ -54,7 +54,7 @@ collectionOfFormInputId.forEach(function(id) {
         if(verifyFormTextbox(this)) {
           // If there is no error then,
           // Add value to the temporaryDataHandler object varible.
-          saveToDataHandler(this.dataset.key, this.value)
+          saveToDataHandler(this.dataset.key, this.value);
         } else {
           // Then send some notification next to the input element.
           const notificationElement = this.nextElementSibling;
@@ -64,7 +64,6 @@ collectionOfFormInputId.forEach(function(id) {
       break;
     
     case "textarea":
-      const maximumCharacterCount = 130; 
       let descriptionHandler = "";
      
       /*
@@ -160,7 +159,6 @@ function setErrorInputfield(id, message) {
 }
 
 function setWarningInputField(id, message) {
-  const color = 'rgba(240, 84, 84, 0.7)';
   const inputfield = document.getElementById(id);
   const inputFieldMessage = inputfield.nextElementSibling;
   
@@ -171,7 +169,7 @@ function setWarningInputField(id, message) {
 }
 
 function removeErrorsWarnings(id) {
-  const inputField = document.getElementById(id);
+  const inputField = document.getElementById(id); 
   
   if(inputField.classList.contains('warning-border') || inputField.classList.contains('error-border')) {
     // removes both classnames even if they are 
@@ -182,7 +180,6 @@ function removeErrorsWarnings(id) {
     // For the assigning the of message
     if(markupName == 'input' || markupName == 'textarea') {
       inputFieldMessage.textContent = "Please fill the input field.";
-      
     } else if(markupName == 'select') {
       inputFieldMessage.textContent = "Please select type of your subject ";
     }
@@ -190,9 +187,8 @@ function removeErrorsWarnings(id) {
     // Assign default color on field message
     inputFieldMessage.style.color = "#6c757d";
   } else {
-    console.log("Nothing has removed")
+    console.log("Nothing has removed");
   }
-  
 }
 
 // Functions to custom some element
