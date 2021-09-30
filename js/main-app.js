@@ -12,30 +12,18 @@ const collectionOfFormInputId = [
   'subject-description'
 ];
 
-// Expirementals 
-const interchanging = setInterval(function() {
-  removeErrorsWarnings('subject-title');
-  const num = Math.floor(Math.random() * Math.floor(100))
-  console.log(num)
-  if(num % 2 === 0) {
-    setWarningInputField('subject-title');
-  } else {
-    setErrorInputfield('subject-title')
-  }
-},1000)
-
 
 // Loops through all form elements and them appropriate eventListeners.
 collectionOfFormInputId.forEach(function(id) {
   const formInput = document.getElementById(id);
-  
+
   switch(formInput.localName) {
     case "input": 
       // Then it must be a textinput element.
       // we add blur eventlistener to this element.
       formInput.addEventListener('blur', function() {
         // But first let's verify if the input is legit.
-        if(verifyFormTextbox(this)) {
+        if(validateTextboxValue(this)) {
           // Get the data-key attribute as a basis key on temporary handler.
           const dataKey = this.dataset.key;
           // Add value to the temporaryDataHandler varible.
@@ -51,7 +39,7 @@ collectionOfFormInputId.forEach(function(id) {
     case "select":
       formInput.addEventListener('change', function() {
         // But first let's verify if the input is legit.
-        if(verifyFormTextbox(this)) {
+        if(validateSelectedType(this)) {
           // If there is no error then,
           // Add value to the temporaryDataHandler object varible.
           saveToDataHandler(this.dataset.key, this.value);
@@ -65,7 +53,6 @@ collectionOfFormInputId.forEach(function(id) {
     
     case "textarea":
       let descriptionHandler = "";
-     
       /*
         This element it has to be a limit of how many characters
         that a user can enter and that limit is 150 characters.
@@ -110,17 +97,23 @@ submitButton.addEventListener('click', function() {
   removeErrorsWarnings('subject-title')
 })
 
+
+// ### FUNCTIONS ####
 // Tidbits functions
-// Function to verify input & select elements value
-function verifyFormTextbox(element) {
-  if(element.value == 0 || element.value.length === 0 || element.value == "0") {return false;} return true;
+// Function to verify input & select elements.
+
+// validateTextboxValue to now validateTextboxValue
+function validateTextboxValue(textbox) {
+  const value = textbox.value;
+  return (value == "") ? false : true;
 }
 
-function verifySelectElement(element) {
-  if(selectElement.value == "0" || selectElement.value === 0) {return false;} return true;
+// verifySelectElement to validateSelectedType
+function validateSelectedType(element) {
+  return element.value == "0" ? false : true;
 }
 
-// Function to save form input data. 
+// Function to save form input data.
 function saveToDataHandler(dataKey, data) {
   temporaryDataHandler[dataKey] = data;
 }
@@ -128,9 +121,9 @@ function saveToDataHandler(dataKey, data) {
 function getTodayDate() {
   let currentDate = "";
   const d     = new Date();
-  const day   = d.getDate(); 
-  const month = d.getMonth(); 
-  const year  = d.getFullYear(); 
+  const day   = d.getDate();
+  const month = d.getMonth();
+  const year  = d.getFullYear();
 
   currentDate = `${month}/${day}/${year}`;
   return currentDate;
@@ -146,9 +139,8 @@ function saveToLocalStorage(temporaryHandler) {
   return convertedCollections;
 }
 
-// Functions to create & remove input forms alert.
+// Functions to invoke and or revoke input forms alerts.
 function setErrorInputfield(id, message) {
-  const color = 'rgba(255, 38, 38, 0.7)';
   const inputfield = document.getElementById(id);
   const inputFieldMessage = inputfield.nextElementSibling;
 
@@ -181,7 +173,7 @@ function removeErrorsWarnings(id) {
     if(markupName == 'input' || markupName == 'textarea') {
       inputFieldMessage.textContent = "Please fill the input field.";
     } else if(markupName == 'select') {
-      inputFieldMessage.textContent = "Please select type of your subject ";
+      inputFieldMessage.textContent = "Please select type of your subject.";
     }
 
     // Assign default color on field message
