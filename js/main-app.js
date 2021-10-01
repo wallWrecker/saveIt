@@ -12,26 +12,27 @@ const collectionOfFormInputId = [
   'subject-description'
 ];
 
-
-// Loops through all form elements and them appropriate eventListeners.
+// Loops all inputs and select elements, 
+// and apply some event listener.
 collectionOfFormInputId.forEach(function(id) {
   const formInput = document.getElementById(id);
 
   switch(formInput.localName) {
     case "input": 
-      // Then it must be a textinput element.
-      // we add blur eventlistener to this element.
+      // Attatch event listener.
       formInput.addEventListener('blur', function() {
-        // But first let's verify if the input is legit.
         if(validateTextboxValue(this)) {
-          // Get the data-key attribute as a basis key on temporary handler.
-          const dataKey = this.dataset.key;
-          // Add value to the temporaryDataHandler varible.
+          approvedInput(this.id);
+          /*
+            using data attribute attatched to the 
+            input fields or select field as a object property name.
+          */ 
+          const dataKey = this.dataset.key; 
           temporaryDataHandler[dataKey] = this.value;
         } else {
-          // Then send some notification next to the input element.
-          const notificationElement = this.nextElementSibling;
-          console.log(notificationElement.textContent);
+          /*We will call the error message to
+          attached on the inputfield*/
+          deniedInputField(this.id)
         }
       });
     break;
@@ -58,11 +59,10 @@ collectionOfFormInputId.forEach(function(id) {
         that a user can enter and that limit is 150 characters.
         That's what the eventlistener below purpose. To monitor how many characters
         and to limit.
-      */
-     
+      */ 
       formInput.addEventListener('input', function(e) {
-        // Initiate other essential elements from form inputs.
-        document.getElementById("character-count").textContent  = this.value.length;;
+        // output character counts based on how many character are there in
+        document.getElementById("character-count").textContent  = this.value.length;
         // Save the current text from textarea to description handler variable.
         descriptionHandler = this.value;
       });
@@ -70,6 +70,7 @@ collectionOfFormInputId.forEach(function(id) {
       // Then after it lose focus to the textarea save it to the
       // temporarydatahandler object.
       formInput.addEventListener('blur', function() {
+        if(have)
         saveToDataHandler(this.dataset.key, descriptionHandler);
       });
   }
@@ -94,9 +95,8 @@ submitButton.addEventListener('click', function() {
   console.log(saveToLocalStorage(temporaryDataHandler));
   console.log(temporaryDataHandler);
   
-  removeErrorsWarnings('subject-title')
+  removeErrorsWarnings('subject-title');
 })
-
 
 // ### FUNCTIONS ####
 // Tidbits functions
@@ -104,8 +104,7 @@ submitButton.addEventListener('click', function() {
 
 // validateTextboxValue to now validateTextboxValue
 function validateTextboxValue(textbox) {
-  const value = textbox.value;
-  return (value == "") ? false : true;
+  return textbox.value == "" ? false : true;
 }
 
 // verifySelectElement to validateSelectedType
@@ -140,32 +139,42 @@ function saveToLocalStorage(temporaryHandler) {
 }
 
 // Functions to invoke and or revoke input forms alerts.
-function setErrorInputfield(id, message) {
+function deniedInputField(id, customMessage) {
   const inputfield = document.getElementById(id);
-  const inputFieldMessage = inputfield.nextElementSibling;
-
-  inputfield.classList.add("error-border");
+  inputfield.classList.remove('warning-border', 'error-border', 'success-border');
   
-  inputFieldMessage.innerText = message || "Hey! I think you need to fill this up!";
+  const inputFieldMessage = inputfield.nextElementSibling;
+  inputfield.classList.add("error-border"); 
+  
+  inputFieldMessage.innerText = customMessage || "Hey! I think you need to fill this up!";
   inputFieldMessage.style.color = "rgb(255, 38, 38)"
 }
 
-function setWarningInputField(id, message) {
-  const inputfield = document.getElementById(id);
-  const inputFieldMessage = inputfield.nextElementSibling;
+// function warnedInput(id, message) {
+//   const inputfield = document.getElementById(id);
+//   const inputFieldMessage = inputfield.nextElementSibling;
   
-  inputfield.classList.add("warning-border");
+//   inputfield.classList.add("warning-border");
   
-  inputFieldMessage.innerText = message || "Hey! I think you need to fill this up!";
-  inputFieldMessage.style.color = "rgb(252, 84, 4)";
-}
+//   inputFieldMessage.innerText = message || "Hey! I think you need to fill this up!";
+//   inputFieldMessage.style.color = "rgb(252, 84, 4)";
+// }
 
+function approvedInput(id, message) {
+  const inputfield = document.getElementById(id);
+  inputfield.classList.remove('warning-border', 'error-border', 'success-border');
+
+  const inputFieldMessage = inputfield.nextElementSibling;
+  inputfield.classList.add("success-border");
+  inputFieldMessage.innerText = message || "This was ok.";
+  inputFieldMessage.style.color = "rgb(41, 187, 137)";
+}
 function removeErrorsWarnings(id) {
   const inputField = document.getElementById(id); 
   
   if(inputField.classList.contains('warning-border') || inputField.classList.contains('error-border')) {
     // removes both classnames even if they are 
-    inputField.classList.remove('warning-border', 'error-border');
+    inputField.classList.remove('warning-border', 'error-border', 'success-border');
     const inputFieldMessage = inputField.nextElementSibling;
     const markupName = inputField.localName; 
     
