@@ -81,7 +81,6 @@ collectionOfFormInputId.forEach(function(id) {
 // Events for submit button..
 const submitButton = document.getElementById('submit-button');
 submitButton.addEventListener('click', function() {
-  clearInterval(interchanging); removeErrorsWarnings('subject-title');
   // Before that we need to check if all the properties of the temporary object 
   // is present.
   for(let property in temporaryDataHandler) {
