@@ -19,14 +19,14 @@ a.lemonyellow {
 /*Custom styles for input fields */
 .error-border {
   /* rgb(255, 0, 0) */
-  border: 2px solid rgb(255, 38, 38, 0.8);
+  border: 1.3px solid rgb(255, 38, 38, 0.8);
 }
 .warning-border {
-  border: 2px solid rgb(252, 84, 4, 0.8);
+  border: 1.3px solid rgb(252, 84, 4, 0.8);
 }
 .success-border {
   /*  */
-  border: 2px solid rgb(41, 187, 137);
+  border: 1.3px solid rgb(41, 187, 137);
 }
 
 /* Styling for result style */
