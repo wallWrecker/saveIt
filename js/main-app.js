@@ -18,11 +18,11 @@ collectionOfFormInputId.forEach(function(id) {
   const formInput = document.getElementById(id);
 
   switch(formInput.localName) {
-    case "input": 
+    case "input":
       // Attatch event listener.
       formInput.addEventListener('blur', function() {
         if(validateTextboxValue(this)) {
-          approvedInput(this.id);
+          approvedInputField(this.id);
           /*
             using data attribute attatched to the 
             input fields or select field as a object property name.
@@ -30,9 +30,8 @@ collectionOfFormInputId.forEach(function(id) {
           const dataKey = this.dataset.key; 
           temporaryDataHandler[dataKey] = this.value;
         } else {
-          /*We will call the error message to
-          attached on the inputfield*/
-          deniedInputField(this.id)
+          // This is to inform the user that he/she has selected the wrong item.
+          deniedInputField(this.id);
         }
       });
     break;
@@ -41,13 +40,12 @@ collectionOfFormInputId.forEach(function(id) {
       formInput.addEventListener('change', function() {
         // But first let's verify if the input is legit.
         if(validateSelectedType(this)) {
+          approvedInputField(this.id, "I think it was nice choice.");
           // If there is no error then,
           // Add value to the temporaryDataHandler object varible.
           saveToDataHandler(this.dataset.key, this.value);
         } else {
-          // Then send some notification next to the input element.
-          const notificationElement = this.nextElementSibling;
-          console.log(notificationElement.innerHTML);
+          deniedInputField(this.id);
         }
       })
       break;
@@ -70,8 +68,12 @@ collectionOfFormInputId.forEach(function(id) {
       // Then after it lose focus to the textarea save it to the
       // temporarydatahandler object.
       formInput.addEventListener('blur', function() {
-        if(have)
-        saveToDataHandler(this.dataset.key, descriptionHandler);
+        if(validateTextboxValue(this)) {
+          approvedInputField(this.id);
+          saveToDataHandler(this.dataset.key, descriptionHandler);
+        } else {
+          deniedInputField(this.id);
+        }
       });
   }
 });
@@ -138,7 +140,7 @@ function saveToLocalStorage(temporaryHandler) {
   return convertedCollections;
 }
 
-// Functions to invoke and or revoke input forms alerts.
+// Functions to invoke and or revoke input forms notifications.
 function deniedInputField(id, customMessage) {
   const inputfield = document.getElementById(id);
   inputfield.classList.remove('warning-border', 'error-border', 'success-border');
@@ -160,7 +162,7 @@ function deniedInputField(id, customMessage) {
 //   inputFieldMessage.style.color = "rgb(252, 84, 4)";
 // }
 
-function approvedInput(id, message) {
+function approvedInputField(id, message) {
   const inputfield = document.getElementById(id);
   inputfield.classList.remove('warning-border', 'error-border', 'success-border');
 
