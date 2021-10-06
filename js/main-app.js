@@ -23,10 +23,8 @@ collectionOfFormInputId.forEach(function(id) {
       formInput.addEventListener('blur', function() {
         if(validateTextboxValue(this)) {
           approvedInputField(this.id);
-          /*
-            using data attribute attatched to the 
-            input fields or select field as a object property name.
-          */ 
+          /*using data attribute attatched to the 
+            input fields or select field as a object property name. */ 
           const dataKey = this.dataset.key; 
           temporaryDataHandler[dataKey] = this.value;
         } else {
@@ -52,12 +50,10 @@ collectionOfFormInputId.forEach(function(id) {
     
     case "textarea":
       let descriptionHandler = "";
-      /*
-        This element it has to be a limit of how many characters
+      /*This element it has to be a limit of how many characters
         that a user can enter and that limit is 150 characters.
         That's what the eventlistener below purpose. To monitor how many characters
-        and to limit.
-      */ 
+        and to limit. */ 
       formInput.addEventListener('input', function(e) {
         // output character counts based on how many character are there in
         document.getElementById("character-count").textContent  = this.value.length;
@@ -81,22 +77,33 @@ collectionOfFormInputId.forEach(function(id) {
 // Events for submit button..
 const submitButton = document.getElementById('submit-button');
 submitButton.addEventListener('click', function() {
-  // Before that we need to check if all the properties of the temporary object 
-  // is present.
+  // !!! NOTE: DAPAT SA INPUT FIELDS TAYO MAG CHECK,
+  // !!! HINDI SA TDH PROPPERTIES.
+  
+  const responseArray = [];
   for(let property in temporaryDataHandler) {
-    const tH = temporaryDataHandler; // tH shorthand for temporaryDataHandler.
-    // Check if the current property has a value
-    if(tH[property] == "") {
-      const inputFieldElement = document.getElementById('subject-' + property) || undefined;
-      // Produce an alert to the input field related to property.
-      console.log(inputFieldElement);
+    // TDH shorthand for temporaryDataHandler also to make it shorther.
+    const TDH = temporaryDataHandler;
+    if(TDH[property] == "") {
+      if(property != "date_posted") {
+        // It will produce an error-alert the user. 
+        // Produce an alert to the input field related to property.
+        responseArray.push(false);
+        deniedInputField(`subject-${property}`);
+      } else {
+        // I will just assign the date of creation.
+        TDH[property] = getTodayDate();
+        responseArray.push(true);
+      }
+    } else {
+      approvedInputField(`subject-${property}`)
+      responseArray.push(true);
     }
   }
-  // If the input fields are passed
-  console.log(saveToLocalStorage(temporaryDataHandler));
-  console.log(temporaryDataHandler);
-  
-  removeErrorsWarnings('subject-title');
+  // If anyone has all have a value.
+  // Then it will be the time to save the input.
+  console.log("Response are: " + responseArray);
+  // If (all are have) {}
 })
 
 // ### FUNCTIONS ####
@@ -125,7 +132,7 @@ function getTodayDate() {
   const month = d.getMonth();
   const year  = d.getFullYear();
 
-  currentDate = `${month}/${day}/${year}`;
+  currentDate = `${month}-${day}-${year}`;
   return currentDate;
 }
 
@@ -148,7 +155,8 @@ function deniedInputField(id, customMessage) {
   inputfield.classList.add("error-border"); 
   
   inputFieldMessage.innerText = customMessage || "Hey! I think you need to fill this up!";
-  inputFieldMessage.style.color = "rgb(255, 38, 38)"
+  inputFieldMessage.style.color = "rgb(255, 38, 38)";
+  console.log(inputfield);
 }
 
 // function warnedInput(id, message) {
