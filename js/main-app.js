@@ -62,9 +62,9 @@ collectionOfFormInputId.forEach(function (id) {
         and to limit. */
       formInput.addEventListener("input", function (e) {
         // output character counts based on how many character are there in
-        document.getElementById("character-count").textContent = this.value.length;
-        // Save the current text from textarea to description handler variable.
-        descriptionHandler = this.value;
+        // document.getElementById("character-count").textContent = this.value.length;
+        // // Save the current text from textarea to description handler variable.
+        // descriptionHandler = this.value;
       });
 
       // Then after it lose focus to the textarea save it to the
@@ -79,20 +79,23 @@ collectionOfFormInputId.forEach(function (id) {
       });
   }
 });
-
 const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("click", function () {
-  const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
-  if (result) {
+  const { responses, result, fields } = validateMultipleInputFields(collectionOfFormInputId);
+  if (result == true) {
     temporaryDataHandler["date_posted"] = getTodayDate();
-    collectionObject.push(temporaryDataHandler);
+    // collectionObject.push(temporaryDataHandler);
+    console.log("Success!!")
   } else {
     fields.forEach(function (inputfield) {
       // deniedInputField(this.id)
       deniedInputField(inputfield.id);
     });
+    alert("Failed")
   }
+
+  console.log(result, responses)
 });
 
 // ### FUNCTIONS ####
@@ -120,9 +123,10 @@ function validateMultipleInputFields(inputIdArray) {
       }
     }
   });
-
+  console.log(response)
   return {
-    result: response.every((response) => { response == true; }),
+    responses: response,
+    result: response.every(r => r == true),
     fields: collectionOfInputFieldsWithIssue,
   };
 }
