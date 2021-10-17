@@ -84,13 +84,13 @@ const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("click", function () {
   const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
-  console.log(Array.isArray(fields));
   if (result) {
     temporaryDataHandler["date_posted"] = getTodayDate();
     collectionObject.push(temporaryDataHandler);
   } else {
-    fields.forEach(inputfield => {
-      
+    fields.forEach(function (inputfield) {
+      // deniedInputField(this.id)
+      deniedInputField(inputfield.id);
     });
   }
 });
@@ -122,9 +122,7 @@ function validateMultipleInputFields(inputIdArray) {
   });
 
   return {
-    result: response.every(function (response) {
-      response == true;
-    }),
+    result: response.every((response) => { response == true; }),
     fields: collectionOfInputFieldsWithIssue,
   };
 }
@@ -147,11 +145,11 @@ function saveToDataHandler(dataKey, data) {
 
 function getTodayDate() {
   let currentDate = "";
-  const d     = new Date();
-  const day   = d.getDate();
+  const d = new Date();
+  const day = d.getDate();
   const month = d.getMonth();
-  const year  = d.getFullYear();
-  
+  const year = d.getFullYear();
+
   return `${month}-${day}-${year}`;
 }
 
