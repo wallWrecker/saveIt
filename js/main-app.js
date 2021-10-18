@@ -82,20 +82,16 @@ collectionOfFormInputId.forEach(function (id) {
 const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("click", function () {
-  const { responses, result, fields } = validateMultipleInputFields(collectionOfFormInputId);
+  const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
   if (result == true) {
     temporaryDataHandler["date_posted"] = getTodayDate();
-    // collectionObject.push(temporaryDataHandler);
-    console.log("Success!!")
+    collectionObject.push(temporaryDataHandler);
   } else {
     fields.forEach(function (inputfield) {
       // deniedInputField(this.id)
       deniedInputField(inputfield.id);
     });
-    alert("Failed")
   }
-
-  console.log(result, responses)
 });
 
 // ### FUNCTIONS ####
@@ -123,9 +119,8 @@ function validateMultipleInputFields(inputIdArray) {
       }
     }
   });
-  console.log(response)
+
   return {
-    responses: response,
     result: response.every(r => r == true),
     fields: collectionOfInputFieldsWithIssue,
   };
