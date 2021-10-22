@@ -49,7 +49,7 @@ collectionOfFormInputId.forEach(function (id) {
           // Add value to the temporaryDataHandler object varible.
           saveToDataHandler(this.dataset.key, this.value);
         } else {
-          deniedInputField(this.id);
+          deniedInputField(this.id, "Please select other type.");
         }
       });
       break;
@@ -79,13 +79,16 @@ collectionOfFormInputId.forEach(function (id) {
       });
   }
 });
-const submitButton = document.getElementById("submit-button");
 
+const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function () {
   const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
   if (result == true) {
     temporaryDataHandler["date_posted"] = getTodayDate();
     collectionObject.push(temporaryDataHandler);
+    // Saves to local storage.
+    // localStorage.setItem('collections', collectionObject);
+
   } else {
     fields.forEach(function (inputfield) {
       // deniedInputField(this.id)
@@ -191,6 +194,7 @@ function approvedInputField(id, message) {
   inputFieldMessage.innerText = message || "This was ok.";
   inputFieldMessage.style.color = "rgb(41, 187, 137)";
 }
+
 function removeErrorsWarnings(id) {
   const inputField = document.getElementById(id);
 
@@ -201,6 +205,7 @@ function removeErrorsWarnings(id) {
       "error-border",
       "success-border"
     );
+
     const inputFieldMessage = inputField.nextElementSibling;
     const markupName = inputField.localName;
 
