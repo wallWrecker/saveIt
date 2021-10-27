@@ -56,7 +56,7 @@ collectionOfFormInputId.forEach(function (id) {
 
     case "textarea":
       let descriptionHandler = "";
-      /*This element it has to be a limit of how many characters
+      /*This element sit has to be a limit of how many characters
         that a user can enter and that limit is 150 characters.
         That's what the eventlistener below purpose. To monitor how many characters
         and to limit. */
@@ -80,6 +80,9 @@ collectionOfFormInputId.forEach(function (id) {
   }
 });
 
+// const form = document.querySelector('form');
+// console.log(form)
+
 const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function () {
   const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
@@ -88,13 +91,21 @@ submitButton.addEventListener("click", function () {
     collectionObject.push(temporaryDataHandler);
     // Saves to local storage.
     // localStorage.setItem('collections', collectionObject);
+    const collection = JSON.parse(localStorage.getItem("collections")) || false;
+    if (collection === false) {
+      // Produce form alert that says it fails to save to localStorage.
 
+    } else {
+      // Produce form
+    }
   } else {
     fields.forEach(function (inputfield) {
       // deniedInputField(this.id)
       deniedInputField(inputfield.id);
     });
   }
+  baseGuideElement.insertAdjacentElement('afterend', createFormAlert('primary'));
+  console.log(createFormAlert("primary"));
 });
 
 // ### FUNCTIONS ####
@@ -106,8 +117,8 @@ function validateMultipleInputFields(inputIdArray) {
   inputIdArray.forEach(function (id) {
     const formElement = document.getElementById(id);
     const inputLocalName = formElement.localName;
-    if (inputLocalName == "input" || inputLocalName == "textarea") {
-      if (validateTextboxValue(formElement) == true) {
+    if(inputLocalName == "input" || inputLocalName == "textarea") {
+      if(validateTextboxValue(formElement) == true) {
         response.push(true);
       } else {
         response.push(false);
@@ -207,7 +218,7 @@ function removeErrorsWarnings(id) {
     );
 
     const inputFieldMessage = inputField.nextElementSibling;
-    const markupName = inputField.localName;
+    const markupName        = inputField.localName;
 
     // For the assigning the of message
     if (markupName == "input" || markupName == "textarea") {
@@ -219,11 +230,34 @@ function removeErrorsWarnings(id) {
     // Assign default color on field message
     inputFieldMessage.style.color = "#6c757d";
   } else {
-    console.log("Nothing has removed");
+    console.log("Nothing has removed.");
   }
+}
+// Function for creating and applying form alert.
+const baseGuideElement = document.querySelector('.greeting-container');
+
+function createFormAlert(severity, message) {
+  const type = {
+    'info'    : "alert-info",
+    'primary' : "alert-primary",
+    'danger'  : "alert-danger"
+  }
+
+  const alertDiv = document.createElement('div');
+  const para = document.createElement("P");
+        para.textContent = message; // message is required.
+        // Apply necessary classes to functions and look like a alert components
+        alertDiv.setAttribute('id', 'form-alert');
+        alertDiv.classList.add('col-10', 'alert', type[severity]);
+        alertDiv.textContent = message || "This is a test message for alert.";
+  return alertDiv;
 }
 
 // Functions to custom some element
 function changeFontColor(element, colorOfChoice) {
   return (element.style.color = `${colorOfChoice}`);
+}
+
+function removeElementFromDOM(domElement) {
+  domElement.remove();
 }
