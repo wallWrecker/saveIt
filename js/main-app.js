@@ -1,6 +1,9 @@
+// Reset LocalStorage dev only
+localStorage.clear();
+
 // Initialize collections object.
 // Get the collection form localstorage if none then it returns a new empty array.
-const collectionObject = JSON.parse(localStorage.getItem("collections")) || [];
+const collectionObject = JSON.parse(localStorage.getItem("collection")) || [];
 
 // This will be used for temporary data handler later.
 const temporaryDataHandler = {
@@ -84,26 +87,24 @@ collectionOfFormInputId.forEach(function (id) {
 // console.log(form)
 
 const submitButton = document.getElementById("submit-button");
+
 submitButton.addEventListener("click", function () {
   const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
-  if (result == true) {
-    temporaryDataHandler["date_posted"] = getTodayDate();
-    collectionObject.push(temporaryDataHandler);
-    // Saves to local storage.
-    // localStorage.setItem('collections', collectionObject);
-    const collection = JSON.parse(localStorage.getItem("collections")) || false;
-    if (collection === false) {
-      // Produce form alert that says it fails to save to localStorage.
-
-    } else {
-      // Produce form
-    }
-  } else {
+  
+  if (result == false) {
     fields.forEach(function (inputfield) {
       // deniedInputField(this.id)
       deniedInputField(inputfield.id);
     });
   }
+  
+  // Applying date
+  temporaryDataHandler["date_posted"] = getTodayDate();
+  collectionObject.push(temporaryDataHandler);
+  // Saves to local storage.
+  localStorage.setItem('collection', JSON.stringify(collectionObject));
+  const fetchedCollections = JSON.parse(localStorage.getItem("collection")) || [];
+  
   baseGuideElement.insertAdjacentElement('afterend', createFormAlert('primary'));
   console.log(createFormAlert("primary"));
 });
@@ -158,10 +159,10 @@ function saveToDataHandler(dataKey, data) {
 
 function getTodayDate() {
   let currentDate = "";
-  const d = new Date();
-  const day = d.getDate();
+  const d     = new Date();
+  const day   = d.getDate();
   const month = d.getMonth();
-  const year = d.getFullYear();
+  const year  = d.getFullYear();
 
   return `${month}-${day}-${year}`;
 }
@@ -251,6 +252,9 @@ function createFormAlert(severity, message) {
         alertDiv.classList.add('col-10', 'alert', type[severity]);
         alertDiv.textContent = message || "This is a test message for alert.";
   return alertDiv;
+}
+function isFormAlertExist() {
+  return document.getElementById('form-alert') != null ? true : false;
 }
 
 // Functions to custom some element
