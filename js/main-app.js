@@ -1,9 +1,9 @@
 // Reset LocalStorage dev only
-localStorage.clear();
+// localStorage.clear();
 
 // Initialize collections object.
 // Get the collection form localstorage if none then it returns a new empty array.
-const collectionObject = JSON.parse(localStorage.getItem("collection")) || [];
+let collectionObject = JSON.parse(localStorage.getItem("collection")) || [];
 
 // This will be used for temporary data handler later.
 const temporaryDataHandler = {
@@ -41,7 +41,7 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id);
         }
       });
-      break;
+    break;
 
     case "select":
       formInput.addEventListener("change", function () {
@@ -55,7 +55,7 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id, "Please select other type.");
         }
       });
-      break;
+    break;
 
     case "textarea":
       let descriptionHandler = "";
@@ -80,15 +80,16 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id);
         }
       });
+    break;
   }
 });
-
-// const form = document.querySelector('form');
-// console.log(form)
 
 const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("click", function () {
+  const baseGuideElement = document.querySelector('.greeting-container');
+  if (isFormAlertExist()) { removeElementFromDOM(document.getElementById("form-alert")) }
+  
   const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
   
   if (result == false) {
@@ -96,17 +97,26 @@ submitButton.addEventListener("click", function () {
       // deniedInputField(this.id)
       deniedInputField(inputfield.id);
     });
+    
+    baseGuideElement.insertAdjacentElement('afterend', createFormAlert('danger','Please fill all the form.'));
+  
+  } else {
+    // Applying date to the post.
+    temporaryDataHandler["date_posted"] = getTodayDate();
+
+    // Lastly before we save is to Assign post-id to diferentiate each posts.
+    temporaryDataHandler["post_id"] = `P-00${collectionObject.length + 1}`;
+    console.log(temporaryDataHandler.post_id);
+
+    collectionObject.push(temporaryDataHandler);
+
+    // Saves to local storage.
+    // localStorage.setItem('collection', JSON.stringify(collectionObject));
+
+    collectionObject = JSON.stringify(localStorage.getItem('collection')) || [];
+
+    baseGuideElement.insertAdjacentElement('afterend', createFormAlert('success', 'HoOoray!'));
   }
-  
-  // Applying date
-  temporaryDataHandler["date_posted"] = getTodayDate();
-  collectionObject.push(temporaryDataHandler);
-  // Saves to local storage.
-  localStorage.setItem('collection', JSON.stringify(collectionObject));
-  const fetchedCollections = JSON.parse(localStorage.getItem("collection")) || [];
-  
-  baseGuideElement.insertAdjacentElement('afterend', createFormAlert('primary'));
-  console.log(createFormAlert("primary"));
 });
 
 // ### FUNCTIONS ####
@@ -235,17 +245,17 @@ function removeErrorsWarnings(id) {
   }
 }
 // Function for creating and applying form alert.
-const baseGuideElement = document.querySelector('.greeting-container');
 
 function createFormAlert(severity, message) {
   const type = {
     'info'    : "alert-info",
     'primary' : "alert-primary",
-    'danger'  : "alert-danger"
+    'danger'  : "alert-danger",
+    'success' : "alert-success"
   }
 
-  const alertDiv = document.createElement('div');
-  const para = document.createElement("P");
+  const alertDiv  = document.createElement('div');
+  const para      = document.createElement("P");
         para.textContent = message; // message is required.
         // Apply necessary classes to functions and look like a alert components
         alertDiv.setAttribute('id', 'form-alert');
@@ -253,6 +263,7 @@ function createFormAlert(severity, message) {
         alertDiv.textContent = message || "This is a test message for alert.";
   return alertDiv;
 }
+
 function isFormAlertExist() {
   return document.getElementById('form-alert') != null ? true : false;
 }
