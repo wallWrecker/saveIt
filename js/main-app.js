@@ -65,8 +65,8 @@ collectionOfFormInputId.forEach(function (id) {
         // document.getElementById("character-count").textContent = this.value.length;
         // // Save the current text from textarea to description handler variable.
         // descriptionHandler = this.value;
-      });
-
+      }); 
+      
       // Then after it lose focus to the textarea save it to the
       // temporarydatahandler object.
       formInput.addEventListener("blur", function () {
