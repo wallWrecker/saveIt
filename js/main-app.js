@@ -1,6 +1,9 @@
+// Reset LocalStorage dev only
+// localStorage.clear();
+
 // Initialize collections object.
 // Get the collection form localstorage if none then it returns a new empty array.
-const collectionObject = JSON.parse(localStorage.getItem("collections")) || [];
+let collectionObject = JSON.parse(localStorage.getItem("collection")) || [];
 
 // This will be used for temporary data handler later.
 const temporaryDataHandler = {
@@ -38,7 +41,7 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id);
         }
       });
-      break;
+    break;
 
     case "select":
       formInput.addEventListener("change", function () {
@@ -52,11 +55,11 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id, "Please select other type.");
         }
       });
-      break;
+    break;
 
     case "textarea":
       let descriptionHandler = "";
-      /*This element it has to be a limit of how many characters
+      /*This element sit has to be a limit of how many characters
         that a user can enter and that limit is 150 characters.
         That's what the eventlistener below purpose. To monitor how many characters
         and to limit. */
@@ -77,23 +80,42 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id);
         }
       });
+    break;
   }
 });
 
 const submitButton = document.getElementById("submit-button");
-submitButton.addEventListener("click", function () {
-  const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
-  if (result == true) {
-    temporaryDataHandler["date_posted"] = getTodayDate();
-    collectionObject.push(temporaryDataHandler);
-    // Saves to local storage.
-    // localStorage.setItem('collections', collectionObject);
 
-  } else {
+submitButton.addEventListener("click", function () {
+  const baseGuideElement = document.querySelector('.greeting-container');
+  if (isFormAlertExist()) { removeElementFromDOM(document.getElementById("form-alert")) }
+  
+  const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
+  
+  if (result == false) {
     fields.forEach(function (inputfield) {
       // deniedInputField(this.id)
       deniedInputField(inputfield.id);
     });
+    
+    baseGuideElement.insertAdjacentElement('afterend', createFormAlert('danger','Please fill all the form.'));
+  
+  } else {
+    // Applying date to the post.
+    temporaryDataHandler["date_posted"] = getTodayDate();
+
+    // Lastly before we save is to Assign post-id to diferentiate each posts.
+    temporaryDataHandler["post_id"] = `P-00${collectionObject.length + 1}`;
+    console.log(temporaryDataHandler.post_id);
+
+    collectionObject.push(temporaryDataHandler);
+
+    // Saves to local storage.
+    // localStorage.setItem('collection', JSON.stringify(collectionObject));
+
+    collectionObject = JSON.stringify(localStorage.getItem('collection')) || [];
+
+    baseGuideElement.insertAdjacentElement('afterend', createFormAlert('success', 'HoOoray!'));
   }
 });
 
@@ -106,8 +128,8 @@ function validateMultipleInputFields(inputIdArray) {
   inputIdArray.forEach(function (id) {
     const formElement = document.getElementById(id);
     const inputLocalName = formElement.localName;
-    if (inputLocalName == "input" || inputLocalName == "textarea") {
-      if (validateTextboxValue(formElement) == true) {
+    if(inputLocalName == "input" || inputLocalName == "textarea") {
+      if(validateTextboxValue(formElement) == true) {
         response.push(true);
       } else {
         response.push(false);
@@ -147,10 +169,10 @@ function saveToDataHandler(dataKey, data) {
 
 function getTodayDate() {
   let currentDate = "";
-  const d = new Date();
-  const day = d.getDate();
+  const d     = new Date();
+  const day   = d.getDate();
   const month = d.getMonth();
-  const year = d.getFullYear();
+  const year  = d.getFullYear();
 
   return `${month}-${day}-${year}`;
 }
@@ -207,7 +229,7 @@ function removeErrorsWarnings(id) {
     );
 
     const inputFieldMessage = inputField.nextElementSibling;
-    const markupName = inputField.localName;
+    const markupName        = inputField.localName;
 
     // For the assigning the of message
     if (markupName == "input" || markupName == "textarea") {
@@ -219,11 +241,38 @@ function removeErrorsWarnings(id) {
     // Assign default color on field message
     inputFieldMessage.style.color = "#6c757d";
   } else {
-    console.log("Nothing has removed");
+    console.log("Nothing has removed.");
   }
+}
+// Function for creating and applying form alert.
+
+function createFormAlert(severity, message) {
+  const type = {
+    'info'    : "alert-info",
+    'primary' : "alert-primary",
+    'danger'  : "alert-danger",
+    'success' : "alert-success"
+  }
+
+  const alertDiv  = document.createElement('div');
+  const para      = document.createElement("P");
+        para.textContent = message; // message is required.
+        // Apply necessary classes to functions and look like a alert components
+        alertDiv.setAttribute('id', 'form-alert');
+        alertDiv.classList.add('col-10', 'alert', type[severity]);
+        alertDiv.textContent = message || "This is a test message for alert.";
+  return alertDiv;
+}
+
+function isFormAlertExist() {
+  return document.getElementById('form-alert') != null ? true : false;
 }
 
 // Functions to custom some element
 function changeFontColor(element, colorOfChoice) {
   return (element.style.color = `${colorOfChoice}`);
+}
+
+function removeElementFromDOM(domElement) {
+  domElement.remove();
 }
