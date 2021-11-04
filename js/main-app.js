@@ -107,16 +107,16 @@ submitButton.addEventListener("click", function () {
     // Lastly before we save is to Assign post-id to diferentiate each posts.
     temporaryDataHandler["post_id"] = `P-00${collectionObject.length + 1}`;
     console.log(temporaryDataHandler.post_id);
-
+    
     collectionObject.push(temporaryDataHandler);
 
     // Saves to local storage.
     // localStorage.setItem('collection', JSON.stringify(collectionObject));
-
-    collectionObject = JSON.stringify(localStorage.getItem('collection')) || [];
+    
+    
 
     baseGuideElement.insertAdjacentElement('afterend', createFormAlert('success', 'HoOoray!'));
-  }
+  } 
 });
 
 // ### FUNCTIONS ####
