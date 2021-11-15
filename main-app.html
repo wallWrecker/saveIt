@@ -17,12 +17,10 @@
 	<!-- Merriwhather sans from google font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 	<!-- Linking my own CSS Styles -->
 	<link rel="stylesheet" href="css/main-app.css">
 </head>
-
 <body>
 	<section class="form-section lightBlue py-1">
 		<article>
@@ -34,7 +32,7 @@
 							Did you find interesting stuff to save? Use the form below.
 						</h2>
 					</div>
-					
+
 					<!--TOOD: Create an alert here after a successful insertion of
 						 collection to the localStorage. -->
 					<div class="col-10 col-sm-11 col-xl-10 py-2">
@@ -42,12 +40,13 @@
 						<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
 						<small class="form-text my-1 thin-label">This is an error message</small>
 					</div>
+
 					<div class="col-10 col-sm-6 col-xl-6 py-2">
 						<label class="form-label" for="">Title</label>
-						<input id="subject-title" class="form-control" type="text" data-key="title"
-							placeholder="Enter title of subject">
+						<input id="subject-title" class="form-control" type="text" data-key="title" placeholder="Enter title of subject">
 						<small class="form-text my-1 thin-label">This is an error message</small>
 					</div>
+
 					<div class="col-10 col-sm-5 col-xl-4 py-2">
 						<label class="form-label thin-label" for="subject-type">Type</label>
 						<select id="subject-type" class="form-select" name="" data-key="type">
@@ -62,8 +61,15 @@
 
 					<div class="col-10 col-sm-11 col-xl-10 py-2">
 						<label class="form-label" for="">Description</label>
-						<textarea name="" id="subject-description" class="form-control" data-key="description" cols="30" rows="5"
-							max-length="130"></textarea>
+						<textarea 
+							name=""
+							id="subject-description" 
+							class="form-control" 
+							data-key="description" 
+							cols="30" 
+							rows="5" 
+							max-length="130"
+							></textarea>
 						<div class="d-flex justify-content-between">
 							<small class="form-text my-1 thin-label">This is an error message</small>
 							<small class="form-text thin-label">
@@ -74,49 +80,34 @@
 
 					<!-- Submit button -->
 					<div class="col-10 col-sm-11 col-xl-10 pt-1 pb-1">
-						<a href="#" id="submit-button" class="btn px-4 lemonyellow">Save it</a>
+						<a 
+							href="#" 
+							id="submit-button" 
+							class="btn px-4 lemonyellow"
+							>Save it</a>
 					</div>
 				</div>
 			</form>
 		</article>
 	</section>
+	
+	<article class="container">
+		<h3 class="display-5">Your recent collections of stories.</h3>
+	</article>
 
-
-	<!-- Result section -->
-	<section class="container-lg pt-3 pb-2 results-section">
-		<h3 class="py-5 greeting-message">Here are your previously saved stuffs.</h3>
-
-		<!-- Search bar, sorts components are contained -->
-		<div class="row justify-content-center align-items-end bg-light p-2">
-			<div class="col-auto col-sm-10">
-				<label class="form-label" for="">Search your stuff here.</label>
-				<input class="form-control" type="text">
-			</div>
-			<div class="col-auto col-sm-2">
-				<button class="btn btn-primary ">Submit</button>
-			</div>
-		</div>
-
-		<!-- List of results section -->
-		<div class="row justify-content-center py-3">
-			<!-- These elements out here are only for viewing perspective -->
-			<!-- This wiill be generated using Javascript. -->
-			<!-- This is an example of what the items once they are fetched. -->
-			<div class="col-10 col-sm-5 col-md-4 col-lg-4 bg-light border my-2">
-				<div class="bg-light rounded-1 p-2">
-					<small id="card-subject-type" class=" text-center text-primary p-1 ">Article</small>
-					<h4 class="h5 py-1">This is an awesome uniquely crafted headline</h4>
-					<p>I like this set up this is so refreshing an all of that. </p>
-					<hr>
-					<!--It creates horizonal line.-->
-					<a class="link-info" href="#">
-						Visit Link
-					</a>
-				</div>
+	<!-- Collections Div's -->
+	<div class="container row justify-content-center bg-light">
+		<!-- Javascript will produce results. -->
+		<!-- Below this is an exmaple of what we would see.-->
+		<div class="col col-md-4 col-xl-3 border rounded-2 bg-white p-1">
+			<h6>Chrsitan Paul</h6>
+			<div>
+				<h5 class="mt-0">How to avoid burnout in tech.</h5>
+				<!-- Description -->
+				<p>	This explains what are the intricasies of programming</p>	
 			</div>
 		</div>
-	</section>
-
+	</div>
 	<!-- Bootstrap Javasript bundle -->
 	<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- My Javascript code -->
