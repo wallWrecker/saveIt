@@ -5,23 +5,43 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>saveIt - Homepage</title>
-	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	
+	<!-- Bootstrap from Nodemodules-->
+	<link 
+		rel="stylesheet" 
+		href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	
+		<!-- Bootstrap Icons -->
+	<link 
+		rel="stylesheet" 
+		href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
 
 	<!-- Import link Google font of Merriwhether -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link 
+		rel="preconnect" 
+		href="https://fonts.googleapis.com">
+	<link 
+		rel="preconnect" 
+		href="https://fonts.gstatic.com" 
+		crossorigin>
+
 	<!-- Imported Merriwhether Montserrat Font -->
 	<link
 		href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat:wght@300;400;500&display=swap"
 		rel="stylesheet">
 	<!-- Merriwhather sans from google font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link 
+		rel="preconnect" 
+		href="https://fonts.googleapis.com">
+	<link 
+		rel="preconnect" 
+		href="https://fonts.gstatic.com" 
+		crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 	<!-- Linking my own CSS Styles -->
 	<link rel="stylesheet" href="css/main-app.css">
 </head>
-<body>
+<body class="bg-light">
 	<section class="form-section lightBlue py-1">
 		<article>
 			<form class="container-sm pt-3 pb-2">
@@ -33,8 +53,7 @@
 						</h2>
 					</div>
 
-					<!--TOOD: Create an alert here after a successful insertion of
-						 collection to the localStorage. -->
+					<!--TOOD: Create an alert here after a successful insertion of collection to the localStorage. -->
 					<div class="col-10 col-sm-11 col-xl-10 py-2">
 						<label class="form-label" for="">Url or Link</label>
 						<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
@@ -80,31 +99,50 @@
 
 					<!-- Submit button -->
 					<div class="col-10 col-sm-11 col-xl-10 pt-1 pb-1">
-						<a 
-							href="#" 
+						<a href="#" 
 							id="submit-button" 
-							class="btn px-4 lemonyellow"
-							>Save it</a>
+							class="btn px-4 lemonyellow">
+							Save story</a>
 					</div>
 				</div>
 			</form>
 		</article>
 	</section>
 	
-	<article class="container">
-		<h3 class="display-5">Your recent collections of stories.</h3>
+	<article class=" py-3 px-2">
+		<h3 class="h2"><i class="bi bi-book"></i> Stories </h3>
 	</article>
 
 	<!-- Collections Div's -->
-	<div class="container row justify-content-center bg-light">
+	<div class="d-flex justify-content-sm-start align-items-center p-2">
 		<!-- Javascript will produce results. -->
 		<!-- Below this is an exmaple of what we would see.-->
-		<div class="col col-md-4 col-xl-3 border rounded-2 bg-white p-1">
-			<h6>Chrsitan Paul</h6>
+		
+		<div class="col-sm-6 col-md-5 col-lg-4 col-xl-4 rounded-2 shadow-sm bg-white p-3 m-1 h-auto">
 			<div>
+				<p class="badge rounded-pill bg-primary">Article</p>
+				<!-- Date and time -->
+				<div class="d-flex d-sm-column ">
+					<p class="text-muted ms-1">
+						<span class="bi bi-calendar2-event"></span>
+						Nov 09, 2021
+					</p>
+					<!-- Time posted component -->
+					<p class="text-muted ms-1">
+						<span class="bi bi-clock fs-6"></span> 
+						10:20 am</a>
+					</p>
+				</div>
+			</div>
+			<!-- Content body --> 
+			<div><!--Content Title-->
 				<h5 class="mt-0">How to avoid burnout in tech.</h5>
-				<!-- Description -->
-				<p>	This explains what are the intricasies of programming</p>	
+				<!-- Content Description -->
+				<p class="text-muted">This explains what are the intricasies of programming</p>	
+			</div>
+			<!-- Visit Component -->
+			<div>
+				<u class="text-primary"><span class="bi bi-book"> Read story.</span></u>
 			</div>
 		</div>
 	</div>
@@ -113,5 +151,4 @@
 	<!-- My Javascript code -->
 	<script src="js/main-app.js"></script>
 </body>
-
 </html>
