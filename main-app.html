@@ -11,7 +11,7 @@
 		rel="stylesheet" 
 		href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 	
-		<!-- Bootstrap Icons -->
+	<!-- Bootstrap Icons -->
 	<link 
 		rel="stylesheet" 
 		href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
@@ -68,7 +68,11 @@
 
 					<div class="col-10 col-sm-5 col-xl-4 py-2">
 						<label class="form-label thin-label" for="subject-type">Type</label>
-						<select id="subject-type" class="form-select" name="" data-key="type">
+						<select 
+							id="subject-type" 
+							class="form-select" 
+							name="" 
+							data-key="type">
 							<option selected value="0">What type it is?</option>
 							<option value="food">Food Article</option>
 							<option value="lifestyle">Lifestyle Article</option>
@@ -87,8 +91,7 @@
 							data-key="description" 
 							cols="30" 
 							rows="5" 
-							max-length="130"
-							></textarea>
+							max-length="130"></textarea>
 						<div class="d-flex justify-content-between">
 							<small class="form-text my-1 thin-label">This is an error message</small>
 							<small class="form-text thin-label">
@@ -110,45 +113,14 @@
 	</section>
 	
 	<article class=" py-3 px-2">
-		<h3 class="h2"><i class="bi bi-book"></i> Stories </h3>
+		<h3 class="h2">Stories<i class="bi bi-book align-middle px-2"></i></h3>
 	</article>
 
 	<!-- Collections Div's -->
-	<div class="d-flex justify-content-sm-start align-items-center p-2">
-		<!-- Javascript will produce results. -->
-		<!-- Below this is an exmaple of what we would see.-->
-		
-		<div class="col-sm-6 col-md-5 col-lg-4 col-xl-3 rounded-2 shadow-sm bg-white p-3 m-1 h-auto">
-			<div>
-				<p class="badge rounded-pill bg-primary">Article</p>
-				<!-- Date and time -->
-				<div class="d-flex d-sm-column ">
-					<p class="text-muted ms-1">
-						<span class="bi bi-calendar2-event"></span>
-						Nov 09, 2021
-					</p>
-					<!-- Time posted component -->
-					<p class="text-muted ms-1">
-						<span class="bi bi-clock fs-6"></span> 
-						10:20 am</a>
-					</p>
-				</div>
-			</div>
-			<!-- Content body --> 
-			<div><!--Content Title-->
-				<h5 class="mt-0">How to avoid burnout in tech.</h5>
-				<!-- Content Description -->
-				<p class="text-muted">This explains what are the intricasies of programming</p>	
-			</div>
-			<!-- Visit Component -->
-			<div>
-				<u class="text-primary"><span class="bi bi-book"> Read story.</span></u>
-			</div>
-		</div>
-	</div>
+	<div class="container-fluid row justify-content-center align-items-center p-2"></div>
 	<!-- Bootstrap Javasript bundle -->
 	<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- My Javascript code -->
-	<script src="js/main-app.js"></script>
+	<script type="module" src="js/main-app.js"></script>
 </body>
 </html>
