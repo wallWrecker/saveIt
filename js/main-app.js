@@ -1,5 +1,5 @@
 // Reset LocalStorage dev only
-// localStorage.clear();
+localStorage.clear();
 
 // Initialize collections object.
 // Get the collection form localstorage if none then it returns a new empty array.
@@ -13,6 +13,7 @@ const temporaryDataHandler = {
   description: "",
   date_posted: "",
 };
+
 // Initiate necessary forminputs ID for attaching eventlistener later.
 const collectionOfFormInputId = [
   "subject-title",
@@ -26,6 +27,7 @@ const collectionOfFormInputId = [
 collectionOfFormInputId.forEach(function (id) {
   const formInput = document.getElementById(id);
 
+  
   switch (formInput.localName) {
     case "input":
       // Attatch event listener.
@@ -41,7 +43,7 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id);
         }
       });
-    break;
+      break;
 
     case "select":
       formInput.addEventListener("change", function () {
@@ -55,7 +57,7 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id, "Please select other type.");
         }
       });
-    break;
+      break;
 
     case "textarea":
       let descriptionHandler = "";
@@ -68,8 +70,8 @@ collectionOfFormInputId.forEach(function (id) {
         // document.getElementById("character-count").textContent = this.value.length;
         // // Save the current text from textarea to description handler variable.
         // descriptionHandler = this.value;
-      }); 
-      
+      });
+
       // Then after it lose focus to the textarea save it to the
       // temporarydatahandler object.
       formInput.addEventListener("blur", function () {
@@ -80,7 +82,7 @@ collectionOfFormInputId.forEach(function (id) {
           deniedInputField(this.id);
         }
       });
-    break;
+      break;
   }
 });
 
@@ -89,17 +91,17 @@ const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function () {
   const baseGuideElement = document.querySelector('.greeting-container');
   if (isFormAlertExist()) { removeElementFromDOM(document.getElementById("form-alert")) }
-  
+
   const { result, fields } = validateMultipleInputFields(collectionOfFormInputId);
-  
+
   if (result == false) {
     fields.forEach(function (inputfield) {
       // deniedInputField(this.id)
       deniedInputField(inputfield.id);
     });
-    
-    baseGuideElement.insertAdjacentElement('afterend', createFormAlert('danger','Please fill all the form.'));
-  
+                                                                                                                              
+    baseGuideElement.insertAdjacentElement('afterend', createFormAlert('danger', 'Please fill all the form.'));
+
   } else {
     // Applying date to the post.
     temporaryDataHandler["date_posted"] = getTodayDate();
@@ -107,16 +109,13 @@ submitButton.addEventListener("click", function () {
     // Lastly before we save is to Assign post-id to diferentiate each posts.
     temporaryDataHandler["post_id"] = `P-00${collectionObject.length + 1}`;
     console.log(temporaryDataHandler.post_id);
-    
+
     collectionObject.push(temporaryDataHandler);
 
     // Saves to local storage.
     // localStorage.setItem('collection', JSON.stringify(collectionObject));
-    
-    
-
     baseGuideElement.insertAdjacentElement('afterend', createFormAlert('success', 'HoOoray!'));
-  } 
+  }
 });
 
 // ### FUNCTIONS ####
@@ -128,8 +127,8 @@ function validateMultipleInputFields(inputIdArray) {
   inputIdArray.forEach(function (id) {
     const formElement = document.getElementById(id);
     const inputLocalName = formElement.localName;
-    if(inputLocalName == "input" || inputLocalName == "textarea") {
-      if(validateTextboxValue(formElement) == true) {
+    if (inputLocalName == "input" || inputLocalName == "textarea") {
+      if (validateTextboxValue(formElement) == true) {
         response.push(true);
       } else {
         response.push(false);
@@ -150,6 +149,7 @@ function validateMultipleInputFields(inputIdArray) {
     fields: collectionOfInputFieldsWithIssue,
   };
 }
+
 // Function to verify individual input & select elements.
 
 // validateTextboxValue to now validateTextboxValue
@@ -190,6 +190,7 @@ function saveToLocalStorage(temporaryHandler) {
 // Functions to invoke and or revoke input forms notifications.
 function deniedInputField(id, customMessage) {
   const inputfield = document.getElementById(id);
+  
   inputfield.classList.remove(
     "warning-border",
     "error-border",
@@ -229,7 +230,7 @@ function removeErrorsWarnings(id) {
     );
 
     const inputFieldMessage = inputField.nextElementSibling;
-    const markupName        = inputField.localName;
+    const markupName = inputField.localName;
 
     // For the assigning the of message
     if (markupName == "input" || markupName == "textarea") {
@@ -254,13 +255,13 @@ function createFormAlert(severity, message) {
     'success' : "alert-success"
   }
 
-  const alertDiv  = document.createElement('div');
-  const para      = document.createElement("P");
-        para.textContent = message; // message is required.
-        // Apply necessary classes to functions and look like a alert components
-        alertDiv.setAttribute('id', 'form-alert');
-        alertDiv.classList.add('col-10', 'alert', type[severity]);
-        alertDiv.textContent = message || "This is a test message for alert.";
+  const alertDiv = document.createElement('div');
+  const para = document.createElement("P");
+  para.textContent = message; // message is required.
+  // Apply necessary classes to functions and look like a alert components
+  alertDiv.setAttribute('id', 'form-alert');
+  alertDiv.classList.add('col-9', 'alert', type[severity]);
+  alertDiv.textContent = message || "This is a test message for alert.";
   return alertDiv;
 }
 
@@ -274,5 +275,5 @@ function changeFontColor(element, colorOfChoice) {
 }
 
 function removeElementFromDOM(domElement) {
-  domElement.remove();
+  domElement.remove();  
 }
