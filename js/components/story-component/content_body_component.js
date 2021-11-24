@@ -14,7 +14,7 @@ function content_description_component(description) {
   return description_container;
 }
 
-function content_body_component(title, description) {
+export function content_body_component({title, description}) {
   const content_body_container = document.createElement('div');
   content_body_container.append([content_title_component, content_description_component]);
   return content_body_container;
