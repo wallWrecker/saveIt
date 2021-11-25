@@ -9,18 +9,8 @@ function story_component(dataObj) {
   story_component_container.classList.add('col-sm-5', 'col-md-5', 'col-lg-4', 'col-xl-3', 'rounded-2', 'shadow-sm', 'bg-white', 'p-3', 'm-1', 'h-auto');
   const childElements = [
     posted_type_component(type),
-    content_body_component(
-      {
-        title: title,
-        description: description,
-      }
-    ),
-    date_time_component(
-      {
-        date: date,
-        time: time
-      }
-    )
+    content_body_component({title: title, description: description}),
+    date_time_component({date: date,time: time})
   ];
   story_component_container.append([childElements])
 }
