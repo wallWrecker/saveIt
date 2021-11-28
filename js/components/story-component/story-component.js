@@ -18,3 +18,15 @@ export function story_component(dataObj) {
 
   story_component_container.append([childElements]);
 }
+
+function visit_button(url) {
+  const div = document.createElement('div')
+  const anchor = document.createElement('a');
+  anchor.setAttribute('href', url);
+  const span = document.createElement('span');
+  span.classList.add('bi', 'bi-book')
+  span.textContent = 'Read storie';
+  
+  div.appendChild(anchor.appendChild(span));
+  return div;
+}
