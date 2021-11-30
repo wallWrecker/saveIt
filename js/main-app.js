@@ -27,7 +27,6 @@ const collectionOfFormInputId = [
 collectionOfFormInputId.forEach(function (id) {
   const formInput = document.getElementById(id);
 
-  
   switch (formInput.localName) {
     case "input":
       // Attatch event listener.
@@ -277,3 +276,20 @@ function changeFontColor(element, colorOfChoice) {
 function removeElementFromDOM(domElement) {
   domElement.remove();  
 }
+
+const collectionResultContainer = document.querySelector('#collection-results');
+
+import {story_component}  from "./components/story-component/story-component.js";
+//{id, url, title, type, date, time, description}
+const sampleData = {
+  id: 1,
+  url: '#',
+  title: "Custom Vue v-model modifiers",
+  type: 'article',
+  date: "Nov 1, 2021",
+  time: '1:30 pm',
+  description: 'No description.'  
+}
+
+collectionResultContainer.append(story_component(sampleData))
+console.log(story_component(sampleData))
