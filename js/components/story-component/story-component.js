@@ -9,7 +9,7 @@ function visit_button(url) {
   const span = document.createElement('span');
   
   anchor.setAttribute('href', url);
-  anchor.classList.add('btn', 'btn-primary');
+  anchor.classList.add('btn', 'btn-link','btn-sm');
   span.classList.add('bi', 'bi-arrow-right','px-1')
   
   anchor.append(document.createTextNode('Read story1'), span);

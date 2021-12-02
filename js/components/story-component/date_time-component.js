@@ -3,11 +3,11 @@ const time_posted_component = function(time) {
   let icon_span = document.createElement('span');
   let theTime = document.createTextNode(time);
   
-  time_container.classList.add('text-muted', 'ms-2');
+  time_container.classList.add('text-muted', 'ms-1');
   icon_span.classList.add('bi', 'bi-clock', 'ms-1');
   
-  time_container.appendChild(icon_span);
-  time_container.appendChild(theTime);
+  time_container.append(icon_span, theTime);
+  // time_container.appendChild(theTime);
   return time_container;
 }
 

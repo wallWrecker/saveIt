@@ -42,86 +42,86 @@
 	<!-- Linking my own CSS Styles -->
 	<link rel="stylesheet" href="css/main-app.css">
 </head>
-<body class="bg-light">
-	<section class="form-section lightBlue py-1">
-		<article>
-			<form class="container-sm pt-3 pb-2">
-				<div class="row justify-content-center">
-					<!-- Message -->
-					<div class="col-10 col-sm-11 col-xxl-10 py-3 greeting-container">
-						<h2 class="h4 col-10 col-sm-8 col-xl-4 greeting-message">
-							Did you find interesting stuff to save? Use the form below.
-						</h2>
-					</div>
+	<body class="bg-light">
+		<section class="form-section lightBlue py-1">
+			<article>
+				<form class="container-sm pt-3 pb-2">
+					<div class="row justify-content-center">
+						<!-- Message -->
+						<div class="col-10 col-sm-11 col-xxl-10 py-3 greeting-container">
+							<h2 class="h4 col-10 col-sm-8 col-xl-4 greeting-message">
+								Did you find interesting stuff to save? Use the form below.
+							</h2>
+						</div>
 
-					<!--TOOD: Create an alert here after a successful insertion of collection to the localStorage. -->
-					<div class="col-10 col-sm-11 col-xl-10 py-2">
-						<label class="form-label" for="">Url or Link</label>
-						<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
-						<small class="form-text my-1 thin-label">This is an error message</small>
-					</div>
-
-					<div class="col-10 col-sm-6 col-xl-6 py-2">
-						<label class="form-label" for="">Title</label>
-						<input id="subject-title" class="form-control" type="text" data-key="title" placeholder="Enter title of subject">
-						<small class="form-text my-1 thin-label">This is an error message</small>
-					</div>
-
-					<div class="col-10 col-sm-5 col-xl-4 py-2">
-						<label class="form-label thin-label" for="subject-type">Type</label>
-						<select 
-							id="subject-type" 
-							class="form-select" 
-							name="" 
-							data-key="type">
-							<option selected value="0">What type it is?</option>
-							<option value="food">Food Article</option>
-							<option value="lifestyle">Lifestyle Article</option>
-							<option value="sports">Sports</option>
-							<option value="tricks">Tips and Tricks</option>
-						</select>
-						<small class="form-text my-1 thin-label">This is an error message</small>
-					</div>
-
-					<div class="col-10 col-sm-11 col-xl-10 py-2">
-						<label class="form-label" for="">Description</label>
-						<textarea 
-							name=""
-							id="subject-description" 
-							class="form-control" 
-							data-key="description" 
-							cols="30" 
-							rows="5" 
-							max-length="130"></textarea>
-						<div class="d-flex justify-content-between">
+						<!--TOOD: Create an alert here after a successful insertion of collection to the localStorage. -->
+						<div class="col-10 col-sm-11 col-xl-10 py-2">
+							<label class="form-label" for="">Url or Link</label>
+							<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
 							<small class="form-text my-1 thin-label">This is an error message</small>
-							<small class="form-text thin-label">
-								<span id="character-count">0</span>/130 charaters
-							</small>
+						</div>
+
+						<div class="col-10 col-sm-6 col-xl-6 py-2">
+							<label class="form-label" for="">Title</label>
+							<input id="subject-title" class="form-control" type="text" data-key="title" placeholder="Enter title of subject">
+							<small class="form-text my-1 thin-label">This is an error message</small>
+						</div>
+
+						<div class="col-10 col-sm-5 col-xl-4 py-2">
+							<label class="form-label thin-label" for="subject-type">Type</label>
+							<select 
+								id="subject-type" 
+								class="form-select" 
+								name="" 
+								data-key="type">
+								<option selected value="0">What type it is?</option>
+								<option value="food">Food Article</option>
+								<option value="lifestyle">Lifestyle Article</option>
+								<option value="sports">Sports</option>
+								<option value="tricks">Tips and Tricks</option>
+							</select>
+							<small class="form-text my-1 thin-label">This is an error message</small>
+						</div>
+
+						<div class="col-10 col-sm-11 col-xl-10 py-2">
+							<label class="form-label" for="">Description</label>
+							<textarea 
+								name=""
+								id="subject-description" 
+								class="form-control" 
+								data-key="description" 
+								cols="30"
+								rows="5"
+								max-length="130"></textarea>
+							<div class="d-flex justify-content-between">
+								<small class="form-text my-1 thin-label">This is an error message</small>
+								<small class="form-text thin-label">
+									<span id="character-count">0</span>/130 charaters
+								</small>
+							</div>
+						</div>
+
+						<!-- Submit button -->
+						<div class="col-10 col-sm-11 col-xl-10 pt-1 pb-1">
+							<a href="#" 
+								id="submit-button" 
+								class="btn px-4 lemonyellow">
+								Save story</a>
 						</div>
 					</div>
-
-					<!-- Submit button -->
-					<div class="col-10 col-sm-11 col-xl-10 pt-1 pb-1">
-						<a href="#" 
-							id="submit-button" 
-							class="btn px-4 lemonyellow">
-							Save story</a>
-					</div>
-				</div>
-			</form>
+				</form>
+			</article>
+		</section>
+		
+		<article class="container-lg py-3 px-2">
+			<h3 class="h2">Stories<i class="bi bi-book align-middle px-2"></i></h3>
 		</article>
-	</section>
-	
-	<article class=" py-3 px-2">
-		<h3 class="h2">Stories<i class="bi bi-book align-middle px-2"></i></h3>
-	</article>
 
-	<!-- Collections Div's -->
-	<div id="collection-results" class="container-fluid row justify-content-center align-items-center p-2"></div>
-	<!-- Bootstrap Javasript bundle -->
-	<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- My Javascript code -->
-	<script type="module" src="js/main-app.js"></script>
-</body>
+		<!-- Collections Div's -->
+		<div id="collection-results" class="container-md d-flex justify-content-center justify-content-md-start align-items-center p-2 px-3"></div>
+		<!-- Bootstrap Javasript bundle -->
+		<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- My Javascript code -->
+		<script type="module" src="js/main-app.js"></script>
+	</body>
 </html>
