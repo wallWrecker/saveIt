@@ -4,10 +4,10 @@ const time_posted_component = function(time) {
   let theTime = document.createTextNode(time);
   
   time_container.classList.add('text-muted', 'ms-1');
-  icon_span.classList.add('bi', 'bi-clock', 'ms-1');
-  
+  icon_span.classList.add('bi', 'bi-clock', 'px-1');
+
   time_container.append(icon_span, theTime);
-  // time_container.appendChild(theTime);
+
   return time_container;
 }
 
