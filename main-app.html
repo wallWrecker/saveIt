@@ -42,7 +42,8 @@
 	<!-- Linking my own CSS Styles -->
 	<link rel="stylesheet" href="css/main-app.css">
 </head>
-	<body class="bg-light">
+	<body class="bg-white">
+		<!-- Form To add Story -->
 		<section class="form-section lightBlue py-1">
 			<article>
 				<form class="container-sm pt-3 pb-2">
@@ -55,7 +56,7 @@
 						</div>
 
 						<!--TOOD: Create an alert here after a successful insertion of collection to the localStorage. -->
-						<div class="col-10 col-sm-11 col-xl-10 py-2">
+						<div class="col-10	10 col-sm-11 col-xl-10 py-2">
 							<label class="form-label" for="">Url or Link</label>
 							<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
 							<small class="form-text my-1 thin-label">This is an error message</small>
@@ -72,7 +73,7 @@
 							<select 
 								id="subject-type" 
 								class="form-select" 
-								name="" 
+								name=""
 								data-key="type">
 								<option selected value="0">What type it is?</option>
 								<option value="food">Food Article</option>
@@ -92,7 +93,8 @@
 								data-key="description" 
 								cols="30"
 								rows="5"
-								max-length="130"></textarea>
+								max-length="130">
+							</textarea>
 							<div class="d-flex justify-content-between">
 								<small class="form-text my-1 thin-label">This is an error message</small>
 								<small class="form-text thin-label">
@@ -106,7 +108,8 @@
 							<a href="#" 
 								id="submit-button" 
 								class="btn px-4 lemonyellow">
-								Save story</a>
+								Save story
+							</a>
 						</div>
 					</div>
 				</form>
@@ -123,10 +126,11 @@
 			<h3 class="display-3 text-center">Stories</h3>
 		</article>
 		
-		<div class="my-3 py-2 px-3 border">
-			<div class="row justify-content-center justify-content-lg-end">
+		<!-- Search Bar Filter Section -->
+		<div class="container-lg my-3 py-2 px-3">
+			<div class="row  justify-content-center  justify-content-md-center justify-content-lg-end ">
 				<!-- Search bar  -->
-				<div class="col-sm-10 col-lg-5 my-1">
+				<div class="col-sm-10 col-md-10 col-lg-6 my-1">
 					<div class="input-group">
 						<input class="form-control" type="text" placeholder="Search">
 						<button id="search_button" class="btn btn-primary">
@@ -135,7 +139,7 @@
 					</div>
 				</div>
 				<!-- Sort(TYPE) -->
-				<div class="col-auto col-sm-4 col-lg-2 my-1">
+				<div class="col-sm-10 col-md-3 col-lg-2 my-1">
 					<select 
 						name=""
 						id=""
@@ -149,8 +153,11 @@
 				</div>
 
 				<!-- Create Story Button -->
-				<div class="col-auto my-1">
-					<button class="btn btn-success">Create Story <i class="bi bi-plus-circle"></i></button>
+				<div class="col-auto col my-1">
+					<button class="btn btn-success">
+						<i class="bi bi-plus-circle pe-1"></i> 
+						Create New Story 
+					</button>
 				</div>
 			</div>
 		</div>
