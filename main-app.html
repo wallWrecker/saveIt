@@ -45,75 +45,78 @@
 	<body class="bg-white">
 		<!-- Form To add Story -->
 		<section class="form-section lightBlue py-1">
-			<article>
-				<form class="container-sm pt-3 pb-2">
-					<div class="row justify-content-center">
-						<!-- Message -->
-						<div class="col-10 col-sm-11 col-xxl-10 py-3 greeting-container">
-							<h2 class="h4 col-10 col-sm-8 col-xl-4 greeting-message">
-								Did you find interesting stuff to save? Use the form below.
-							</h2>
-						</div>
-
-						<!--TOOD: Create an alert here after a successful insertion of collection to the localStorage. -->
-						<div class="col-10	10 col-sm-11 col-xl-10 py-2">
-							<label class="form-label" for="">Url or Link</label>
-							<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
-							<small class="form-text my-1 thin-label">This is an error message</small>
-						</div>
-
-						<div class="col-10 col-sm-6 col-xl-6 py-2">
-							<label class="form-label" for="">Title</label>
-							<input id="subject-title" class="form-control" type="text" data-key="title" placeholder="Enter title of subject">
-							<small class="form-text my-1 thin-label">This is an error message</small>
-						</div>
-
-						<div class="col-10 col-sm-5 col-xl-4 py-2">
-							<label class="form-label thin-label" for="subject-type">Type</label>
-							<select 
-								id="subject-type" 
-								class="form-select" 
-								name=""
-								data-key="type">
-								<option selected value="0">What type it is?</option>
-								<option value="food">Food Article</option>
-								<option value="lifestyle">Lifestyle Article</option>
-								<option value="sports">Sports</option>
-								<option value="tricks">Tips and Tricks</option>
-							</select>
-							<small class="form-text my-1 thin-label">This is an error message</small>
-						</div>
-
-						<div class="col-10 col-sm-11 col-xl-10 py-2">
-							<label class="form-label" for="">Description</label>
-							<textarea 
-								name=""
-								id="subject-description" 
-								class="form-control" 
-								data-key="description" 
-								cols="30"
-								rows="5"
-								max-length="130">
-							</textarea>
-							<div class="d-flex justify-content-between">
-								<small class="form-text my-1 thin-label">This is an error message</small>
-								<small class="form-text thin-label">
-									<span id="character-count">0</span>/130 charaters
-								</small>
-							</div>
-						</div>
-
-						<!-- Submit button -->
-						<div class="col-10 col-sm-11 col-xl-10 pt-1 pb-1">
-							<a href="#" 
-								id="submit-button" 
-								class="btn px-4 lemonyellow">
-								Save story
-							</a>
+			<form class="container-sm pt-3 pb-2">
+					<div id="create-story-modal" class="modal">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Create new story</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+									<div class=" modal-body">
+										<div class="row justify-content-center">
+											<!--TOOD: Create an alert here after a successful insertion of collection to the localStorage. -->
+											<div class="col-10 col-sm-11 col-xl-10 py-2">
+												<label class="form-label" for="">Url or Link</label>
+												<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
+												<small class="form-text my-1 thin-label">This is an error message</small>
+											</div>
+					
+											<div class="col-10 col-sm-11 col-xl-6 py-2">
+												<label class="form-label" for="">Title</label>
+												<input id="subject-title" class="form-control" type="text" data-key="title" placeholder="Enter title of subject">
+												<small class="form-text my-1 thin-label">This is an error message</small>
+											</div>
+					
+											<div class="col-10 col-sm-11 col-xl-4 py-2">
+												<label class="form-label thin-label" for="subject-type">Type</label>
+												<select 
+													id="subject-type" 
+													class="form-select" 
+													name=""
+													data-key="type">
+													<option selected value="0">What type it is?</option>
+													<option value="food">Food Article</option>
+													<option value="lifestyle">Lifestyle Article</option>
+													<option value="sports">Sports</option>
+													<option value="tricks">Tips and Tricks</option>
+												</select>
+												<small class="form-text my-1 thin-label">This is an error message</small>
+											</div>
+					
+											<div class="col-10 col-sm-11 col-xl-10 py-2">
+												<label class="form-label" for="">Description</label>
+												<textarea 
+													name=""
+													id="subject-description" 
+													class="form-control" 
+													data-key="description" 
+													cols="30"
+													rows="5"
+													max-length="130">
+												</textarea>
+												<div class="d-flex justify-content-between">
+													<small class="form-text my-1 thin-label">This is an error message</small>
+													<small class="form-text thin-label">
+														<span id="character-count">0</span>/130 charaters
+													</small>
+												</div>
+											</div>
+					
+											<!-- Submit button -->
+											<div class="col-10 col-sm-11 col-xl-10 pt-1 pb-1">
+												<a href="#" 
+													id="submit-button" 
+													class="btn px-4 lemonyellow">
+													Save story
+												</a>
+												</div>
+										</div>
+									</div>
+							 </div>
 						</div>
 					</div>
-				</form>
-			</article>
+			</form>
 		</section>
 	
 		<!-- Section Heading -->
@@ -154,7 +157,10 @@
 
 				<!-- Create Story Button -->
 				<div class="col-auto col my-1">
-					<button class="btn btn-success">
+					<button 
+						class="btn btn-success"
+						data-bs-toggle="modal" 
+						data-bs-target="#create-story-modal">
 						<i class="bi bi-plus-circle pe-1"></i> 
 						Create New Story 
 					</button>
