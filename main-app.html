@@ -43,7 +43,7 @@
 	<link rel="stylesheet" href="css/main-app.css">
 </head>
 	<body class="bg-white">
-		<!-- Form To add Story -->
+		<!-- Modal form To add Story -->
 		<section class="form-section lightBlue">
 			<div id="create-story-modal" class="modal">
 				<div class="modal-dialog modal-lg">
@@ -52,9 +52,9 @@
 							<h5 class="modal-title">Create new story</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-							<div class=" modal-body">
+							<div class="modal-body">
 								<div class="row justify-content-center">
-									<!--TOOD: Create an alert here after a successful insertion of collection to the localStorage. -->
+									<!--TODO: Create an alert here after a successful insertion of collection to the localStorage. -->
 									<div class="col-10 col-sm-11 col-xl-10 py-2">
 										<label class="form-label" for="">Url or Link</label>
 										<input id="subject-url" class="form-control" type="text" data-key="url" placeholder="Enter url of subject">
@@ -92,8 +92,7 @@
 											data-key="description" 
 											cols="30"
 											rows="5"
-											max-length="130">
-										</textarea>
+											max-length="130"></textarea>
 										<div class="d-flex justify-content-between">
 											<small class="form-text my-1 thin-label">This is an error message</small>
 											<small class="form-text thin-label">
@@ -129,7 +128,7 @@
 		
 		<!-- Search Bar Filter Section -->
 		<div class="container-lg my-3 py-2 px-3">
-			<div class="row  justify-content-center  justify-content-md-center justify-content-lg-end ">
+			<div class="row justify-content-center justify-content-md-center justify-content-lg-end bg-light py-2 px-3 shadow-sm rounded-2">
 				<!-- Search bar  -->
 				<div class="col-sm-10 col-md-10 col-lg-6 my-1">
 					<div class="input-group">
@@ -169,7 +168,7 @@
 		<!-- Collections Div's -->
 		<div 
 			id="collection-results" 
-			class="container-lg d-flex justify-content-center justify-content-md-start align-items-center p-2 px-3">
+			class="container-lg d-flex justify-content-center justify-content-md-start align-items-center px-3">
 			<!-- Javascript will handle -->
 		</div>
 		
